@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Customer Registration</title>
+    <meta charset="utf-8" />
+
+</head>
+<body ng-controller="CustRegistrationController">
+    <div class="container">
+        <div class="formBox">
+
+            <form class="col-lg-4 col-lg-offset-4">
+                <label>Firstname</label>
+                <input type="text" ng-model="firstname" class="form-control" placeholder="Firstname" /><br />
+                <label>Lastname</label>
+                <input type="text" ng-model="lastname" class="form-control" placeholder="Lastname" /><br />
+                <label>Contact</label>
+                <input type="text" ng-model="contact" class="form-control" placeholder="Contact" /><br />
+                <label>Card Number</label>
+                <input type="number" ng-model="cardnumber" class="form-control" placeholder="Credit card number" maxlength="16" min="16" /><br />
+                <label>Email</label>
+                <input type="email" ng-model="email" class="form-control" placeholder="Email" /><br />
+                <label>Password</label>
+                <input type="password" ng-model="password" class="form-control" placeholder="Password" /><br />
+                <br />
+                <input ng-click="RegisterUser()" type="button" class="btn btn-default btn-block" value="Sign Up">
+            </form>
+
+        </div>
+    </div>
+
+    <script src="../Scripts/angular.js"></script>
+    <script src="../demo.js"></script>
+    <script src="../services.js"></script>
+    <!--<script src="../Scripts/loginValidation.js"></script>-->
+    <!--<script src="../Scripts/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Driver Login</title>
+    <meta charset="utf-8" />
+
+
+</head>
+<body>
+    <div class="container-fluid">
+
+        <div class="col-lg-6">
+            <h1 class="text-center">Register</h1>
+            <form class=" class=" col-lg-4 col-lg-offset-4"" ng-controller="DriverR">
+
+
+                <input ng-model="d_email" type="text" class="form-control" placeholder="someone@gmail.com" required autofocus><br />
+
+                <input ng-model="d_firstname" type="text" class="form-control" placeholder="name" required autofocus><br />
+
+                <input ng-model="d_lastname" type="text" class="form-control" placeholder="Surname" required autofocus><br />
+
+                <input ng-model="d_cell" type="text" class="form-control" placeholder="Phone Number" required autofocus><br />
+
+                <input ng-model="d_password" type="password" class="form-control" placeholder="Password" required><br />
+                <button ng-click="DRegister()" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
+            </form>
+        </div>
+
+        <div class="col-lg-6" ng-controller="DLoginController">
+            <form class="form-signin">
+                <h1 class="text-center">Login</h1>
+                <input ng-model="d_email" type="text" class="form-control" placeholder="someone@gmail.com" required autofocus><br />
+                <input ng-model="d_password" type="password" class="form-control" placeholder="Password" required><br />
+
+                <button ng-click="Log()" class="btn btn-lg btn-primary btn-block" type="button">Get Driving!</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
+    <script src="../Scripts/jquery-3.0.0.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.js"></script>
+
+
+    <script src="../services.js"></script>
+    <script src="../demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Driver Edit Register</title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+
+
+</head>
+<body ng-controller="DProfileController">
+    <div class="container">
+        <div class="formBox">
+            <form>
+                <label>Driver Id</label>
+                <input class="form-control" type="text" ng-model="d_id" placeholder="id" disabled />
+                <label>Firstname</label>
+                <input class="form-control" type="text" ng-model="d_firstname" placeholder="Firstname" disabled />
+                <label>Lastname</label>
+                <input class="form-control" type="text" ng-model="d_lastname" placeholder="Lastname" disabled />
+                <label>Contact</label>
+                <input class="form-control" type="text" ng-model="d_cell" placeholder="Contact" />
+                <label>Email</label>
+                <input class="form-control" type="email" ng-model="d_email" placeholder="Email" disabled />
+                <label>Password</label>
+                <input class="form-control" type="password" ng-model="d_password" placeholder="Password" disabled />
+                <br />
+                <input class="btn btn-default" ng-click="EditDriver()" type="button" value="Update Profile">
+            </form>
+        </div>
+    </div>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
+    <script src="../Scripts/jquery-3.0.0.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.js"></script>
+
+
+    <script src="../services.js"></script>
+    <script src="../demo.js"></script>
+</body>
+</html>

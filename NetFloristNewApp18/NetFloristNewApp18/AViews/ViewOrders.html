@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Admin View Orders</title>
+    <meta charset="utf-8" />
+
+
+
+</head>
+<body ng-controller="AViewOrdersController">
+    <div class="col-md-3 col-md-offset-1">
+        <h3 class="text-danger">Select Order</h3>
+        <hr />
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                {{selectedItems}}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li ng-repeat="o in order_data">
+                    <a ng-click="dropboxitemselected(o)">{{o.ord_id}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="well">
+            <h2 class="text-center">Order Details</h2>
+            <form ng-show="isDeleteItemVisible">
+                <div class="form-group">
+                    <label for="InputEmail">Total Price</label>
+                    <input type="text" ng-model="totalPrice" class="form-control input-lg" placeholder="name" disabled />
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">Delivery Address</label>
+                    <input type="text" ng-model="ord_country" class="form-control input-lg" placeholder="country" disabled />
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">Customer email</label>
+                    <input type="text" ng-model="email" class="form-control input-lg" placeholder="email" disabled />
+                </div>
+                <div class="form-group">
+                    <label for="OrderStatus">Order Status</label>
+                    <input list="OrderStatus" ng-model="ord_status" name="Order Status" class="form-control input-lg" placeholder="Select an option" />
+                    <datalist id="OrderStatus">
+                        <select name="OrderStatus">
+                            <option value="Ready for pick up">Ready for pick up</option>
+                        </select>
+                    </datalist>
+                </div>
+                <div class="center-block">
+                    <button ng-click="updateStatus()" class="btn btn-lg btn-primary ">Update Status</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
+    <script src="../Scripts/jquery-3.0.0.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.js"></script>
+
+    <script src="../demo.js"></script>
+    <script src="../services.js"></script>
+</body>
+</html>

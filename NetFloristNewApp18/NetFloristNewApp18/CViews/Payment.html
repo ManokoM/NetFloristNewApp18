@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Payment Page</title>
+    <meta charset="utf-8" />
+</head>
+<body ng-controller="CPaymentController">
+    <div class="container">
+        <div class="right"></div>
+        <div class="left">
+            <div class="formBox">
+                <form>
+                    <label>CUSTOMER CREDIT CARD INFORMATION</label>
+                    <br />
+                
+                    <input type="text" class="form-control" ng-model="card_name" placeholder="ABSA" /><br />
+                    <input type="text" class="form-control" ng-model="card_CCV" placeholder="000" />
+                    <br />
+                    <label>Card Expiry Date</label>
+                    <br />
+                    <input type="text" class="form-control" ng-model="card_expMonth" placeholder="12" maxlength="2" min="2" /><br />
+                    <input type="text" class="form-control" ng-model="card_expYear" placeholder="2017" maxlength="4" min="4" />
+                    <label>Payment Date</label><br />
+                    <br />
+                    <input type="date" class="form-control" ng-model="pay_date" placeholder="Date" />
+                    <br />
+                    <label>CUSTOMER EMAIL</label><br />
+            
+                    <input type="text" ng-model="email" placeholder="email" disabled />
+                    <input ng-click="Pay()" type="button" class="btn btn-default" value="CLICK TO PAY" />
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading">
+        <div class="row">
+            <h3 class="text-center">Payment Details</h3>
+            <img class="img-responsive cc-img" src="http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
+        </div>
+    </div>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../demo.js"></script>
+    <script src="../services.js"></script>
+    <!--<script src="../Scripts/loginValidation.js"></script>-->
+    <!--<script src="../Scripts/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+</body>
+</html>

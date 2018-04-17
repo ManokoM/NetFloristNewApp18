@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Ready Orders</title>
+    <meta charset="utf-8" />
+
+</head>
+<body ng-controller="DOrdersController">
+
+    <table class="table table-hover general-table" cellspacing="40" align="center" style="width:80%" ng-model="resSearch">
+        <thead class="grid-top panel">
+            <tr>
+                <th>Order ID</th>
+                <th>Delivery Address</th>
+                <th>Total Price</th>
+                <th>Order Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="ord in order_data">
+                <td>{{ord.ord_id}}</td>
+                <td>{{ord.ord_country}}</td>
+                <td>{{ord.totalPrice}}</td>
+                <td>{{ord.ord_status}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script src="../Scripts/angular.js"></script>
+    <script src="../demo.js"></script>
+    <script src="../services.js"></script>
+    <!--<script src="../Scripts/loginValidation.js"></script>-->
+    <!--<script src="../Scripts/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+</body>
+</html>

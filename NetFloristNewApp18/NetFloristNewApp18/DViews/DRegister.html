@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Driver Register</title>
+    <meta charset="utf-8" />
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="formBox">
+            <form class="col-lg-4 col-lg-offset-4"ng-controller="DriverR">
+                <label>Firstname</label>
+                <input type="text" ng-model="emp_firstname" class="form-control" placeholder="Firstname" />
+                <br />
+                <label>Lastname</label>
+                <input type="text" ng-model="emp_lastname" class="form-control" placeholder="Lastname" />
+                <br />
+                <label>Contact</label>
+                <input type="text" ng-model="emp_cellNo" class="form-control" placeholder="Contact" />
+                <br />
+                <label>Email</label>
+                <input type="email" ng-model="emp_email" class="form-control" placeholder="Email" />
+                <br />
+                <label>Password</label>
+                <input type="password" ng-model="emp_password" class="form-control" placeholder="Password" /><br />
+                <br />
+                <label>Role</label>
+                <input type="password" ng-model="role" class="form-control" placeholder="Role" /><br />
+                <br />
+                <input class="btn btn-default btn-block" ng-click="DRegister()" type="button" value="Sign Up">
+            </form>
+        </div>
+    </div>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../demo.js"></script>
+    <script src="../services.js"></script>
+    <!--<script src="../Scripts/loginValidation.js"></script>-->
+    <!--<script src="../Scripts/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+</body>
+</html>

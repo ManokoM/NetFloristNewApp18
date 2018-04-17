@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NetFloristNewApp18dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="payment_id" />
+      <PropertyRef Name="card_name" />
+      <PropertyRef Name="card_CCV" />
+      <PropertyRef Name="card_expMonth" />
+      <PropertyRef Name="card_expYear" />
+      <PropertyRef Name="pay_date" />
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="payment_id" Type="Int32" Nullable="false" />
+    <Property Name="card_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="card_CCV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="card_expMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="card_expYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pay_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="prod_id" />
+      <PropertyRef Name="prod_name" />
+      <PropertyRef Name="prod_price" />
+      <PropertyRef Name="prod_type" />
+      <PropertyRef Name="prod_desc" />
+    </Key>
+    <Property Name="prod_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prod_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prod_price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="prod_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prod_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="email" />
+      <PropertyRef Name="firstname" />
+      <PropertyRef Name="lastname" />
+      <PropertyRef Name="contact" />
+      <PropertyRef Name="password" />
+      <PropertyRef Name="cardnumber" />
+    </Key>
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contact" Type="Int32" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cardnumber" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="NetFloristNewApp18dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Tables" EntityType="Self.Table" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NetFloristNewApp18dbModelStoreContainer" CdmEntityContainer="NetFloristNewApp18dbEntities">
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+          <ScalarProperty Name="card_name" ColumnName="card_name" />
+          <ScalarProperty Name="card_CCV" ColumnName="card_CCV" />
+          <ScalarProperty Name="card_expMonth" ColumnName="card_expMonth" />
+          <ScalarProperty Name="card_expYear" ColumnName="card_expYear" />
+          <ScalarProperty Name="pay_date" ColumnName="pay_date" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+          <ScalarProperty Name="prod_name" ColumnName="prod_name" />
+          <ScalarProperty Name="prod_price" ColumnName="prod_price" />
+          <ScalarProperty Name="prod_type" ColumnName="prod_type" />
+          <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tables">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Table">
+        <MappingFragment StoreEntitySet="Table">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="cardnumber" ColumnName="cardnumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

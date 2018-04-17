@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Driver</title>
+    <meta charset="utf-8" />
+
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="demo.js"></script>
+    <script src="services.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+</head>
+<body>
+    <div class="jumbotron">
+        <center>
+            <h1>WELCOME TO NetFlorist</h1>
+            <p>Find The Perfect Gift Here</p>
+        </center>
+    </div>
+    <nav class="navbar navbar-inverse">
+        <!-- atlest change the color -->
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">NetFlorist</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li ><a href="#!DHome">Home</a> </li>
+            </ul>
+            <ul class="nav navbar-nav" ng-hide="!currentUser">
+                <li><a href="#!DProfile" class="text-right text-danger">Profile <span class="glyphicon glyphicon-edit"></span></a></li>
+                <li><a href="#!DOrderss" class="text-right text-danger">Update Orders <span class="glyphicon glyphicon-list"></span></a></li>
+                <li><a href="#!PickedOrders" class="text-right text-danger">Ready-For-Pickup <span class="glyphicon glyphicon-list"></span></a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-hide="!currentUser">
+                <li><a href="#!index.html" class="text-right text-danger"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-show="!currentUser">
+                <li><a href="#!DRegister" class="text-right text-danger"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#!DLogin" class="text-right text-danger"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div ng-view>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Add Product</title>
+    <meta charset="utf-8" />
+
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
+    <script src="../Scripts/jquery-3.0.0.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.js"></script>
+
+    <script src="../demo.js"></script>
+    <script src="../services.js"></script>
+
+
+</head>
+<body >
+    <div class="container">
+        <div class="left"></div>
+        <div class="right">
+            <div class="formBox" >
+                <form ng-controller="AAddProductController">
+                    <br />
+                    <label>Product Name</label>
+                    <input type="text" ng-model="prod_name" class="form-control" placeholder="Product Name" /><br />
+                    <label>Product Price</label>
+                    <input type="text" ng-model="prod_price" class="form-control" placeholder="Product Price" /><br />
+                    <label>Product Type</label>
+                    <input list="Product Type" ng-model="prod_type" name="Product Type"class="form-control" placeholder="Product Type" /><br />
+                    <datalist id="Product Type">
+                        <select name=" Product Type">
+                            <option value="Alcohol"></option>
+                            <option value="Hampers"></option>
+                            <option value="Baked Goods"></option>
+                            <option value="Flowers"></option>
+                        </select>
+                    </datalist>
+                    <label>Product Description</label>
+                    <input type="text" ng-model="prod_desc" class="form-control" placeholder="Product Description" /><br />
+                    <label>Product Quantity</label>
+                    <input type="number" ng-model="prod_quantity" class="form-control" placeholder="Quantity" /><br />
+                    <input ng-click="AddProd()" type="button" class="btn btn-default" value="Add Product" /><br /><br />
+                </form>
+            </div>
+            <table class="table table-hover table-bordered" ng-controller="UploadRestImageController">
+                <thead>
+                    <tr>
+                        <td> Image Title </td>
+                        <td> Image Object </td>
+                        <td> Image Size </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="image in imagesrc track by $index">
+                        <td>{{image.Name}}</td>
+                        <td>
+                            <img ng-src="{{image.Src}}" title="{{image.Title}}" style="width:200px; height:200px" />
+                        </td>
+                        <td>{{image.Size}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-lg-7">
+                    <input type="file" multiple ng-files="GetImages($files)" />
+                </div>
+                <div class="col-lg-5">
+                    <input ng-disabled="!imagesrc.length" type="button" class="btn btn-success" ng-click="loadup()" value="Upload" />
+                    <input ng-disabled="!imagesrc.length" type="button" class="btn btn-success" ng-click="reset()" value="Cancel" />
+                </div>
+            </div>
+                
+            
+        </div>
+    </div>
+
+</body>
+</html>

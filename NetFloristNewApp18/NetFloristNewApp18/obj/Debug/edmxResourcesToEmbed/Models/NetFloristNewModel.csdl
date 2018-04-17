@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NetFloristNewApp18dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ad_firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ad_lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ad_cell" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ad_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="d_id" />
+    </Key>
+    <Property Name="d_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="d_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="d_firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="d_lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="d_cell" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="d_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="payment_id" />
+    </Key>
+    <Property Name="payment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="card_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="card_CCV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="card_expMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="card_expYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pay_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="prod_id" />
+    </Key>
+    <Property Name="prod_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prod_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prod_price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="prod_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prod_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ProImages" Relationship="Self.fk_product" FromRole="Product" ToRole="ProImage" />
+    <Property Name="prod_quantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProImage">
+    <Key>
+      <PropertyRef Name="img_id" />
+    </Key>
+    <Property Name="img_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="prod_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.fk_product" FromRole="ProImage" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contact" Type="Int32" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cardnumber" Type="Int64" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="PRODUCT_VIEWS">
+    <Key>
+      <PropertyRef Name="prod_id" />
+      <PropertyRef Name="prod_name" />
+      <PropertyRef Name="prod_price" />
+      <PropertyRef Name="prod_desc" />
+      <PropertyRef Name="Image" />
+    </Key>
+    <Property Name="prod_id" Type="Int32" Nullable="false" />
+    <Property Name="prod_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prod_price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="prod_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProImage" Type="Self.ProImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="prod_id" />
+      </Principal>
+      <Dependent Role="ProImage">
+        <PropertyRef Name="prod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NetFloristNewModel18" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Drivers" EntityType="Self.Driver" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProImages" EntityType="Self.ProImage" />
+    <EntitySet Name="Tables" EntityType="Self.Table" />
+    <EntitySet Name="PRODUCT_VIEWS" EntityType="Self.PRODUCT_VIEWS" />
+    <AssociationSet Name="fk_product" Association="Self.fk_product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProImage" EntitySet="ProImages" />
+    </AssociationSet>
+    <FunctionImport Name="Drivers_Orders" ReturnType="Collection(NetFloristNewApp18dbModel.Drivers_Orders_Result)" />
+    <FunctionImport Name="GetAllOrders" ReturnType="Collection(NetFloristNewApp18dbModel.GetAllOrders_Result)" />
+    <EntitySet Name="Ord_Tbl" EntityType="NetFloristNewApp18dbModel.Ord_Tbl" />
+    <FunctionImport Name="DriverOrders" ReturnType="Collection(NetFloristNewApp18dbModel.DriverOrders_Result)" />
+    <FunctionImport Name="GetAllOrderss" ReturnType="Collection(NetFloristNewApp18dbModel.GetAllOrderss_Result)" />
+    <EntitySet Name="suppliers" EntityType="NetFloristNewApp18dbModel.supplier" />
+    <EntitySet Name="Orderrs" EntityType="NetFloristNewApp18dbModel.Orderr" />
+    <FunctionImport Name="DriverOrderss" ReturnType="Collection(NetFloristNewApp18dbModel.DriverOrderss_Result)" />
+    <FunctionImport Name="Drivers_Orderss" ReturnType="Collection(NetFloristNewApp18dbModel.Drivers_Orderss_Result)" />
+    <FunctionImport Name="GetAllOrdersss" ReturnType="Collection(NetFloristNewApp18dbModel.GetAllOrdersss_Result)" />
+  </EntityContainer>
+  <ComplexType Name="Drivers_Orders_Result">
+    <Property Type="Int32" Name="ord_id" Nullable="false" />
+    <Property Type="Decimal" Name="totalPrice" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="ord_addr" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_status" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_deliveryStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetAllOrders_Result">
+    <Property Type="Int32" Name="ord_id" Nullable="false" />
+    <Property Type="String" Name="prod_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="prod_desc" Nullable="false" />
+    <Property Type="Decimal" Name="totalPrice" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="ord_addr" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ord_deliveryStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Ord_Tbl">
+    <Key>
+      <PropertyRef Name="op_id" />
+    </Key>
+    <Property Name="op_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pro_id" Type="Int32" Nullable="false" />
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="DriverOrders_Result">
+    <Property Type="Int32" Name="ord_id" Nullable="false" />
+    <Property Type="Int32" Name="Number_of_Items" Nullable="true" />
+    <Property Type="String" Name="ord_addr" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetAllOrderss_Result">
+    <Property Type="Int32" Name="ord_id" Nullable="false" />
+    <Property Type="String" Name="prod_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="prod_desc" Nullable="false" />
+    <Property Type="Decimal" Name="totalPrice" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ord_addr" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ord_deliveryStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="supp_id" />
+    </Key>
+    <Property Name="supp_id" Type="Int32" Nullable="false" />
+    <Property Name="s_email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="s_password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="s_contact" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Orderr">
+    <Key>
+      <PropertyRef Name="ord_id" />
+    </Key>
+    <Property Name="ord_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="totalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ord_street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ord_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ord_province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ord_country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ord_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ord_deliveryStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="DriverOrderss_Result">
+    <Property Type="Int32" Name="ord_id" Nullable="false" />
+    <Property Type="Int32" Name="Number_of_Items" Nullable="true" />
+    <Property Type="String" Name="ord_country" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_street" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_city" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_province" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Drivers_Orderss_Result">
+    <Property Type="Int32" Name="ord_id" Nullable="false" />
+    <Property Type="Decimal" Name="totalPrice" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="ord_country" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_street" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_city" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_province" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ord_status" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_deliveryStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetAllOrdersss_Result">
+    <Property Type="Int32" Name="ord_id" Nullable="false" />
+    <Property Type="String" Name="prod_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="prod_desc" Nullable="false" />
+    <Property Type="Decimal" Name="totalPrice" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ord_country" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_street" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_city" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_province" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ord_deliveryStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

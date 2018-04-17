@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>View Products</title>
+    <meta charset="utf-8" />
+</head>
+<body ng-controller="CViewProductsController">
+    <form>
+        <table class="table table-hover"> <!-- cellspacing="40" align="center" style="width:95%" --> 
+            <thead class="grid-top panel">
+                <tr>
+                    <!--<th>Product Logo</th>-->
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                    <th>Product Price</th>
+                    <th>Quantity</th>
+                    <th>Threshold</th>
+                    <th>In-Stock</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="prd in Products">
+                    <td>{{prd.prod_id}}</td>
+                    <td>{{prd.prod_name}}</td>
+                    <td>{{prd.prod_desc}}</td>
+                    <td><h4>{{prd.prod_price | currency : "R"}}</h4></td>
+                    <td>{{prd.prod_quantity}}</td>
+                    <td>{{prd.prod_threshold}}</td>
+                    <td>{{prd.prod_instock}}</td>
+                    <td>
+                        <input class="form-control" type="number" ng-model="ProToEdit.prod_quantity" min="1" />
+                        <br /><br /><a class="btn btn-success" ng-click="updateProduct(prd)">Update quanity</a><br /><br />
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../demo.js"></script>
+    <script src="../services.js"></script>
+    <!--<script src="../Scripts/loginValidation.js"></script>-->
+    <!--<script src="../Scripts/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+</body>
+</html>

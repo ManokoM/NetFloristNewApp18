@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NetFloristNewApp18dbModelStoreContainer" CdmEntityContainer="NetFloristNewApp18dbEntities1">
+    <EntitySetMapping Name="Tables">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Table">
+        <MappingFragment StoreEntitySet="Table">
+          <ScalarProperty Name="cardnumber" ColumnName="cardnumber" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ord_Tbl">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Ord_Tbl">
+        <MappingFragment StoreEntitySet="Ord_Tbl">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+          <ScalarProperty Name="op_id" ColumnName="op_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="pay_date" ColumnName="pay_date" />
+          <ScalarProperty Name="card_expYear" ColumnName="card_expYear" />
+          <ScalarProperty Name="card_expMonth" ColumnName="card_expMonth" />
+          <ScalarProperty Name="card_CCV" ColumnName="card_CCV" />
+          <ScalarProperty Name="card_name" ColumnName="card_name" />
+          <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="ord_deliveryStatus" ColumnName="ord_deliveryStatus" />
+          <ScalarProperty Name="ord_status" ColumnName="ord_status" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="ord_addr" ColumnName="ord_addr" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="ord_id" ColumnName="ord_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="emp_password" ColumnName="emp_password" />
+          <ScalarProperty Name="emp_cellNo" ColumnName="emp_cellNo" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="emp_lastname" ColumnName="emp_lastname" />
+          <ScalarProperty Name="emp_firstname" ColumnName="emp_firstname" />
+          <ScalarProperty Name="emp_email" ColumnName="emp_email" />
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
+          <ScalarProperty Name="prod_type" ColumnName="prod_type" />
+          <ScalarProperty Name="prod_price" ColumnName="prod_price" />
+          <ScalarProperty Name="prod_name" ColumnName="prod_name" />
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProImages">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.ProImage">
+        <MappingFragment StoreEntitySet="ProImage">
+          <ScalarProperty Name="img_id" ColumnName="img_id" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCT_VIEW">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.PRODUCT_VIEW">
+        <MappingFragment StoreEntitySet="PRODUCT_VIEW">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="prod_price" ColumnName="prod_price" />
+          <ScalarProperty Name="prod_name" ColumnName="prod_name" />
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="ad_password" ColumnName="ad_password" />
+          <ScalarProperty Name="ad_cell" ColumnName="ad_cell" />
+          <ScalarProperty Name="ad_lastname" ColumnName="ad_lastname" />
+          <ScalarProperty Name="ad_firstname" ColumnName="ad_firstname" />
+          <ScalarProperty Name="ad_email" ColumnName="ad_email" />
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Driver">
+        <MappingFragment StoreEntitySet="Driver">
+          <ScalarProperty Name="d_password" ColumnName="d_password" />
+          <ScalarProperty Name="d_cell" ColumnName="d_cell" />
+          <ScalarProperty Name="d_lastname" ColumnName="d_lastname" />
+          <ScalarProperty Name="d_firstname" ColumnName="d_firstname" />
+          <ScalarProperty Name="d_email" ColumnName="d_email" />
+          <ScalarProperty Name="d_id" ColumnName="d_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

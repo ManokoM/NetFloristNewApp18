@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Customer Login</title>
+    <meta charset="utf-8" />
+
+
+
+    <!--<style>
+        input[type=text] {
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url('searchicon.png');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+            input[type=text]:focus {
+                width: 100%;
+            }
+    </style>-->
+
+
+
+</head>
+<body ng-controller="LoginController">
+    <div class="container-fluid">
+        <div class="left"></div>
+        <div class="right">
+            <div class="formBox">
+                <form  class="col-lg-4 col-lg-offset-4">
+                    <label>Email</label>
+                    <input type="email" ng-model="email" class="form-control" placeholder="Email" /><br />
+                    <label>Password</label>
+                    <input type="password" ng-model="password" class="form-control" placeholder="Password" /><br />
+                    <br />
+                    <input class="btn btn-default btn-block" ng-click="loginClick()" type="button" class="btn btn-default" value="Sign In">
+                    </form>
+</div>
+        </div>
+    </div>
+
+    <script src="../Scripts/angular.js"></script>
+    <script src="../demo.js"></script>
+    <script src="../services.js"></script>
+    <!--<script src="../Scripts/loginValidation.js"></script>-->
+    <!--<script src="../Scripts/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+</body>
+</html>

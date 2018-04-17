@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>View Products</title>
+    <meta charset="utf-8" />
+
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+
+    <script src="demo.js"></script>
+    <script src="services.js"></script>
+
+</head>
+<body ng-controller="SViewProductsController">
+    <form>
+    <table class="table table-hover">
+        <!-- cellspacing="40" align="center" style="width:95%" -->
+        <thead class="grid-top panel">
+            <tr>
+                <!--<th>Product Logo</th>-->
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Product Type</th>
+                <th>Product Description</th>
+                <th>Product Price</th>
+                <th>Product Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="prod in Products">
+                <td>{{prod.prod_id}}</td>
+                <td>{{prod.prod_name}}</td>
+                <td>{{prod.prod_type}}</td>
+                <td>{{prod.prod_desc}}</td>
+                <td>{{prod.prod_price}}</td>
+                <td>{{prod.prod_quantity}}
+                <div ng-if="prod.prod_quantity <5">
+                    <h3 style="color:#f00"><strong>Running Low!</strong></h3>
+                </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+
+</body>
+</html>

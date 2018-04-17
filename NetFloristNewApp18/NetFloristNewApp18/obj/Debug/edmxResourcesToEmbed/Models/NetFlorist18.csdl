@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NetFloristNewApp18dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ad_firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ad_lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ad_cell" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ad_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="d_id" />
+    </Key>
+    <Property Name="d_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="d_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="d_firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="d_lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="d_cell" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="d_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ord_Tbl">
+    <Key>
+      <PropertyRef Name="op_id" />
+    </Key>
+    <Property Name="op_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pro_id" Type="Int32" Nullable="false" />
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="NetFloristNewApp18dbModel.fk_order" FromRole="Ord_Tbl" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="NetFloristNewApp18dbModel.fk_ordProduct" FromRole="Ord_Tbl" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="ord_id" />
+    </Key>
+    <Property Name="ord_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="totalPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ord_addr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ord_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ord_deliveryStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ord_Tbl" Relationship="NetFloristNewApp18dbModel.fk_order" FromRole="Order" ToRole="Ord_Tbl" />
+    <Property Name="prod_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="NetFloristNewApp18dbModel.fk_productOrder1" FromRole="Order" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="payment_id" />
+    </Key>
+    <Property Name="payment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="card_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="card_CCV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="card_expMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="card_expYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pay_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="prod_id" />
+    </Key>
+    <Property Name="prod_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prod_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prod_price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="prod_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prod_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ProImages" Relationship="Self.fk_product" FromRole="Product" ToRole="ProImage" />
+    <NavigationProperty Name="Ord_Tbl" Relationship="NetFloristNewApp18dbModel.fk_ordProduct" FromRole="Product" ToRole="Ord_Tbl" />
+    <NavigationProperty Name="Orders" Relationship="NetFloristNewApp18dbModel.fk_productOrder1" FromRole="Product" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="ProImage">
+    <Key>
+      <PropertyRef Name="img_id" />
+    </Key>
+    <Property Name="img_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="prod_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.fk_product" FromRole="ProImage" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contact" Type="Int32" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cardnumber" Type="Int64" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="fk_product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProImage" Type="Self.ProImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="prod_id" />
+      </Principal>
+      <Dependent Role="ProImage">
+        <PropertyRef Name="prod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NetFloristNewModel" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Drivers" EntityType="Self.Driver" />
+    <EntitySet Name="Ord_Tbl" EntityType="Self.Ord_Tbl" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProImages" EntityType="Self.ProImage" />
+    <EntitySet Name="Tables" EntityType="Self.Table" />
+    <AssociationSet Name="fk_product" Association="Self.fk_product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProImage" EntitySet="ProImages" />
+    </AssociationSet>
+    <AssociationSet Name="fk_order" Association="NetFloristNewApp18dbModel.fk_order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Ord_Tbl" EntitySet="Ord_Tbl" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ordProduct" Association="NetFloristNewApp18dbModel.fk_ordProduct">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Ord_Tbl" EntitySet="Ord_Tbl" />
+    </AssociationSet>
+    <EntitySet Name="PRODUCT_VIEWS" EntityType="NetFloristNewApp18dbModel.PRODUCT_VIEWS" />
+    <FunctionImport Name="GetAllOrders" ReturnType="Collection(NetFloristNewApp18dbModel.GetAllOrders_Result)" />
+    <EntitySet Name="ORDER_VIEW" EntityType="NetFloristNewApp18dbModel.ORDER_VIEW" />
+    <AssociationSet Name="fk_productOrder1" Association="NetFloristNewApp18dbModel.fk_productOrder1">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="fk_order">
+    <End Type="NetFloristNewApp18dbModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="NetFloristNewApp18dbModel.Ord_Tbl" Role="Ord_Tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="ord_id" />
+      </Principal>
+      <Dependent Role="Ord_Tbl">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ordProduct">
+    <End Type="NetFloristNewApp18dbModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="NetFloristNewApp18dbModel.Ord_Tbl" Role="Ord_Tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="prod_id" />
+      </Principal>
+      <Dependent Role="Ord_Tbl">
+        <PropertyRef Name="pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PRODUCT_VIEWS">
+    <Key>
+      <PropertyRef Name="prod_id" />
+      <PropertyRef Name="prod_name" />
+      <PropertyRef Name="prod_price" />
+      <PropertyRef Name="prod_desc" />
+      <PropertyRef Name="Image" />
+    </Key>
+    <Property Name="prod_id" Type="Int32" Nullable="false" />
+    <Property Name="prod_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prod_price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="prod_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <ComplexType Name="GetAllOrders_Result">
+    <Property Type="Int32" Name="ord_id" Nullable="false" />
+    <Property Type="String" Name="prod_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="prod_desc" Nullable="false" />
+    <Property Type="Decimal" Name="totalPrice" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="ord_addr" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ord_deliveryStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="ORDER_VIEW">
+    <Key>
+      <PropertyRef Name="ord_id" />
+      <PropertyRef Name="totalPrice" />
+      <PropertyRef Name="ord_addr" />
+      <PropertyRef Name="prod_name" />
+      <PropertyRef Name="prod_price" />
+      <PropertyRef Name="prod_desc" />
+    </Key>
+    <Property Name="ord_id" Type="Int32" Nullable="false" />
+    <Property Name="totalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ord_addr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prod_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prod_price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="prod_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="fk_productOrder1">
+    <End Type="NetFloristNewApp18dbModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="NetFloristNewApp18dbModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="prod_id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="prod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Customer Edit Profile</title>
+    <meta charset="utf-8" />
+
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.js"></script>
+
+    <script src="../services.js"></script>
+    <script src="../demo.js"></script>
+
+</head>
+<body ng-controller="CProfileController">
+    <div class="container-fluid">
+        <div class="formBox">
+            <form class="col-lg-4 col-lg-offset-4">
+                <label>Customer Id</label>
+                <input class="form-control" type="text" ng-model="id" placeholder="Id" disabled /><br />
+                <label>Firstname</label>
+                <input class="form-control" type="text" ng-model="firstname" placeholder="Enter new firstname" disabled /><br />
+                <label>Lastname</label>
+                <input class="form-control" type="text" ng-model="lastname" placeholder="Enter new lastname" /><br />
+                <label>Contact</label>
+                <input class="form-control" type="text" ng-model="contact" placeholder="Enter new contact" /><br />
+                <label>Card Number</label>
+                <input class="form-control" type="number" ng-model="cardnumber" placeholder="Enter new credit card number" /><br />
+                <label>Email</label>
+                <input class="form-control" type="email" ng-model="email" placeholder="Email" disabled /><br />
+                <label>Password</label>
+                <input class="form-control" type="password" ng-model="password" placeholder="Password" disabled /><br />
+                <br />
+                <input class="btn btn-default btn-block" ng-click="EditUser()" type="button" value="Update Profile"><br />
+            </form>
+        </div>
+    </div>
+</body>
+</html>

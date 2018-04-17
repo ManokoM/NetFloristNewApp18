@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
+    <script src="../Scripts/jquery-3.0.0.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.js"></script>
+
+    <script src="../demo.js"></script>
+    <script src="../services.js"></script>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="alert alert-info">
+
+    <strong>Be infomed!</strong> Please delete image first before delete product details
+    </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <table class="table table-hover" ng-controller="DeleteProductsController">
+            <!-- cellspacing="40" align="center" style="width:95%" -->
+            <thead class="grid-top panel">
+                <tr>
+                    <!--<th>Product Logo</th>-->
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="prd in img">
+                    <td>{{prd.img_id}}</td>
+                    <td>{{prd.prod_id}}</td>
+                    <td><img height="100px" width="100px" class="img-circle" ng-src="data:image/jpg;base64,{{prd.Image}}"></td>
+                    <td><button class="btn btn-danger" ng-click="delete(prd)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <div class="col-lg-6 col-md-6">
+        <table class="table table-hover" ng-controller="DeleteProdDeetsController">
+            <!-- cellspacing="40" align="center" style="width:95%" -->
+            <thead class="grid-top panel">
+                <tr>
+                    <!--<th>Product Logo</th>-->
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="prod in Products">
+                    <td>{{prod.prod_id}}</td>
+                    <td>{{prod.prod_name}}</td>
+                    <td>{{prod.prod_type}}</td>
+                    <td>{{prod.prod_desc}}</td>
+                    <td>{{prod.prod_price}}</td>
+                    <td><button class="btn btn-danger" ng-click="delete(prod)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

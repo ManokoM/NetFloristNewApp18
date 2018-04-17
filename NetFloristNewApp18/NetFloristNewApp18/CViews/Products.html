@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html ng-app="Signin">
+<head>
+    <title>View Products</title>
+    <meta charset="utf-8" />
+
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.js"></script>
+
+    <script src="../demo.js"></script>
+    <script src="../services.js"></script>
+
+</head>
+<body ng-controller="CViewProductsController">
+
+    <ul class="nav navbar-nav" ng-hide="!currentUser">
+        <li><a href="#!CCheckout"><span class="glyphicon glyphicon-shopping-cart"></span>{{selectedItems.length}}</a></li>
+    </ul>
+
+    <form>
+        <table class="table table-hover"> <!-- cellspacing="40" align="center" style="width:95%" -->
+            <thead class="grid-top panel">
+                <tr>
+                    <!--<th>Product Logo</th>-->
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                    <th>Product Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="prd in Product">
+                    <td>{{prd.prod_id}}</td>
+                    <td>{{prd.prod_name}}</td>
+                    <td>{{prd.prod_desc}}</td>
+                    <td><h4>{{prd.prod_price | currency : "R"}}</h4></td>
+                    <td>
+                        <button ng-click="addItem(prd)" class="btn-sm btn-group-vertical btn-warning">
+                            Add to cart
+                            <i class="fa fa-shopping-cart"></i>
+                        </button>
+                    </td>
+                    <!--<td><button type="button" class="btn btn-success">Select To Cart</button></td> -->
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+</body>
+</html>
