@@ -16,3 +16,21 @@ C:\Users\User\Documents\Visual Studio 2013\Projects\NetFloristNewApp18\NetFloris
 C:\Users\User\Documents\Visual Studio 2013\Projects\NetFloristNewApp18\NetFloristNewApp18\bin\EntityFramework.xml
 C:\Users\User\Documents\Visual Studio 2013\Projects\NetFloristNewApp18\NetFloristNewApp18\bin\EntityFramework.SqlServer.xml
 C:\Users\User\documents\visual studio 2013\Projects\NetFloristNewApp18\NetFloristNewApp18\obj\Debug\NetFloristNewApp18.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\NetFloristNewApp18.dll.config
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\NetFloristNewApp18.dll
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\NetFloristNewApp18.pdb
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\EntityFramework.dll
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\EntityFramework.SqlServer.dll
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\Newtonsoft.Json.dll
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\System.Net.Http.Formatting.dll
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\System.Web.Http.dll
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\System.Web.Http.WebHost.dll
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\EntityFramework.xml
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\EntityFramework.SqlServer.xml
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\Newtonsoft.Json.xml
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\System.Net.Http.Formatting.xml
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\System.Web.Http.xml
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\System.Web.Http.WebHost.xml
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\obj\Debug\NetFloristNewApp18.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\obj\Debug\NetFloristNewApp18.dll
+C:\Users\User\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\obj\Debug\NetFloristNewApp18.pdb

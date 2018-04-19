@@ -105,10 +105,13 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\33512335-soft-blue-grey-floral-pattern-vintage-flower-background.jpg" />
+    <Content Include="Content\images\depositphotos_68385535-stock-photo-background-of-pink-purple-tulips.jpg" />
     <Content Include="Content\images\pexels-photo-190932.jpeg" />
     <Content Include="Content\images\pexels-photo-296878.jpeg" />
     <Content Include="Content\images\pexels-photo-849810.jpeg" />
     <Content Include="Content\images\smiley.png" />
+    <Content Include="Content\StyleSheet1.css" />
     <Content Include="custIndex.html" />
     <Content Include="CViews\Cart.html" />
     <Content Include="CViews\CheckOut.html" />
@@ -131,6 +134,15 @@
     <Content Include="DViews\PickedOrders.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\0c85ac637cc20eb8cfc7a5f29566b718.png" />
+    <Content Include="Images\28653641455715p.jpg" />
+    <Content Include="Images\71zx+2rECUL._SL1200_.jpg" />
+    <Content Include="Images\almastba.com_1389443279_188.jpg" />
+    <Content Include="Images\d6c7285319cbe317b2bd2eeb373db8dc.jpg" />
+    <Content Include="Images\E-8.jpg" />
+    <Content Include="Images\f94886be2c0a032c88e7f1bb194fc257.jpg" />
+    <Content Include="Images\letter-o-hi.png" />
+    <Content Include="Images\r-400.png" />
     <Content Include="index.html" />
     <Content Include="fonts\Scripts\angular-animate.js" />
     <Content Include="fonts\Scripts\angular-animate.min.js" />
@@ -1680,6 +1692,7 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
+    <Content Include="Scripts\JavaScript1.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.3.1.js.txt" />
     <Content Include="services.js" />

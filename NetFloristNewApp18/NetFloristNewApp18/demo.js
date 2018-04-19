@@ -176,7 +176,6 @@ angularApp.controller("CustRegistrationController", function ($scope, UserApi, $
                 firstname: $scope.firstname,
                 lastname: $scope.lastname,
                 contact: $scope.contact,
-                cardnumber: $scope.cardnumber,
                 email: $scope.email,
                 password: $scope.password
             },
@@ -368,16 +367,6 @@ angularApp.controller("CartController", function ($scope, $location, CommonProp,
             alert("Couldn't get all the information");
         }
     };
-
-    //getProd();  //GET ALL THE PRODUCTS
-    //function getProd() {
-    //    UserApi.getProduct().then(function (response) {
-    //        $scope.Product = response.data;
-    //    }), function () {
-    //        alert('No products Found');
-    //    }
-    //}
-
     // DEFINING SHOPPING CART ARRAY THAT WILL WILL STORE THE ITEMS
     $rootScope.myItems = [];
 
@@ -403,27 +392,9 @@ angularApp.controller("CartController", function ($scope, $location, CommonProp,
         }
 
     };
-
-
-    // CALCULATING THE TOTAL PRICE
-    //var updatePrice = function () {
-    //    var total = 0;
-    //    for (var i = 0; i < $scope.myItems.length; i++) {
-    //        totalPrice += ($scope.myItems[i].count) * ($scope.myItems[i].prod_Price);
-    //    }
-    //    $scope.total = totalPrice;
-    //    CommonProp.setTotal(totalPrice);    
-    //};
-
-
     // REMOVING ALL THE ITEMS IN CART AT ONCE
     $scope.removeBasket = function () {
         $scope.myItems.splice(0, $scope.myItems.length);
-        //for (var i = 0; i < $scope.myItems.length; i++)
-        //    if (myItems[i] === prod_id) {
-        //        myItems.splice(i, 1);
-        //        break;
-        //    }
        updatePrice();
     };
 
