@@ -27,19 +27,27 @@
                 <th>Product Description</th>
                 <th>Product Price</th>
                 <th>Product Quantity</th>
+                <th>Product Threshold</th>
+                <th>Product Instock</th>
+                <th>Product Add Batch</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="prod in Products">
-                <td>{{prod.prod_id}}</td>
-                <td>{{prod.prod_name}}</td>
-                <td>{{prod.prod_type}}</td>
-                <td>{{prod.prod_desc}}</td>
-                <td>{{prod.prod_price}}</td>
-                <td>{{prod.prod_quantity}}
-                <div ng-if="prod.prod_quantity <5">
-                    <h3 style="color:#f00"><strong>Running Low!</strong></h3>
-                </div>
+            <tr ng-repeat="prd in Products">
+                <td>{{prd.prod_id}}</td>
+                <td>{{prd.prod_name}}</td>
+                <td>{{prd.prod_type}}</td>
+                <td>{{prd.prod_desc}}</td>
+                <td>{{prd.prod_price}}</td>
+                <td>{{prd.prod_quantity}}</td>
+                <td><input align="center"type="text" name="{{prd.prod_threshold}}" disabled><br></td>
+                <td>{{prd.prod_instock}}</td>
+                <td>
+                    <div ng-if="prod.prod_quantity <5">
+                        <h3 style="color:#f00"><strong>Running Low!</strong></h3>
+                    </div>
+                    <input class="form-control" type="number" ng-model="prod_quantity" min="1" />
+                    <br /><br /><a class="btn btn-success" ng-click="Edit(prd)">Update quanity</a><br /><br />
                 </td>
             </tr>
         </tbody>

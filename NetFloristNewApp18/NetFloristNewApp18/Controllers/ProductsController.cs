@@ -39,38 +39,35 @@ namespace NetFloristNewApp18.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutProduct(int id, Product product)
         {
-            Console.WriteLine("Hello");
-            Product oldDetails = product;
-
-
             if (!ModelState.IsValid)
             {
-                return BadRequest("Not valid data");
+                return BadRequest(ModelState);
             }
 
-
-            using (db)
+            if (id != product.prod_id)
             {
-                var prod = db.Products.Where(g => g.prod_id.Equals(id)).FirstOrDefault();
-                if (prod != null)
-                {
-                    prod.prod_name = product.prod_name;
-                    prod.prod_price = product.prod_price;
-                    prod.prod_type = product.prod_type;
-                    prod.prod_desc = product.prod_desc;
-                    prod.prod_quantity = product.prod_quantity;
-                    prod.prod_threshold = product.prod_threshold;
-                    prod.prod_instock = product.prod_instock;
+                return BadRequest();
+            }
 
-                    var res = db.SaveChanges();
+            db.Entry(product).State = EntityState.Modified;
 
-                }
-                else
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProductExists(id))
                 {
                     return NotFound();
                 }
+                else
+                {
+                    throw;
+                }
             }
-            return Ok();
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Products
@@ -117,7 +114,6 @@ namespace NetFloristNewApp18.Controllers
         {
             return db.Products.Count(e => e.prod_id == id) > 0;
         }
-
         [Route("api/GetProductImage")]
         public IEnumerable<ProductViewController> GetProductImage()
         {
@@ -125,5 +121,6 @@ namespace NetFloristNewApp18.Controllers
             var ProductImage = db.Database.SqlQuery<ProductViewController>("SELECT Product.prod_id,Product.prod_name,Product.prod_price, Product.prod_desc,ProImage.Image FROM Product INNER JOIN ProImage ON Product.prod_id=ProImage.prod_id ORDER BY Product.prod_name ASC");
             return ProductImage;
         }
+
     }
 }

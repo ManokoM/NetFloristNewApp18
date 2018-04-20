@@ -148,14 +148,27 @@ UserService.factory('UserApi', function ($http) {
         return dattta;
     };
 
-    UserApi.updateProduct = function (ProToEdit) {
-        var a = $http({
+    //UserApi.updateProduct = function (ProToEdit) {
+    //    var a = $http({
+    //        method: 'PUT',
+    //        url: urlBase + 'Products/' + ProToEdit.prod_id,
+    //        data: ProToEdit
+    //    });
+    //    return a;
+    //};
+
+
+
+    UserApi.Edit = function (ToEdit) {
+
+        var dar = $http({
             method: 'PUT',
-            url: urlBase + 'Products/' + ProToEdit.prod_id,
-            data: ProToEdit
+            url: urlBase + 'Products/' + ToEdit.prod_id,
+            data: ToEdit
+
         });
-        return a;
-    };
+        return dar;
+    }
 
     //  Retreive all the orders
     UserApi.RetreiveOrders = function () {

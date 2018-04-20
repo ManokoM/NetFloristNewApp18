@@ -1713,7 +1713,6 @@
     <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductViewController.cs" />
-    <Compile Include="Controllers\ProImagesController.cs" />
     <Compile Include="Controllers\suppliersController.cs" />
     <Compile Include="Controllers\TablesController.cs" />
     <Compile Include="Global.asax.cs">

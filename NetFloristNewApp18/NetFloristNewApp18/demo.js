@@ -301,37 +301,37 @@ angularApp.controller("CViewProductsController", function ($scope, UserApi, $loc
         }
     }
 
-    $scope.prod_id = $scope.prod_id;
-    $scope.prod_name = $scope.prod_name;
-    $scope.prod_price = $scope.prod_price;
-    $scope.prod_desc = $scope.prod_desc;
-    $scope.prod_type = $scope.prod_type;
-    $scope.prod_quantity = $scope.prod_quantity;
-    $scope.prod_threshold = $scope.prod_threshold;
-    $scope.prod_instock = $scope.prod_instock;
+    //$scope.prod_id = $scope.prod_id;
+    //$scope.prod_name = $scope.prod_name;
+    //$scope.prod_price = $scope.prod_price;
+    //$scope.prod_desc = $scope.prod_desc;
+    //$scope.prod_type = $scope.prod_type;
+    //$scope.prod_quantity = $scope.prod_quantity;
+    //$scope.prod_threshold = $scope.prod_threshold;
+    //$scope.prod_instock = $scope.prod_instock;
 
-    $scope.prod_id = $rootScope.prod_id;
-    $scope.updateProduct = function (prod_id) {
-        var ProToEdit = {
-            'prod_id': $scope.prod_id,
-            'prod_name': $scope.prod_name,
-            'prod_price': $scope.prod_price,
-            'prod_desc': $scope.prod_desc,
-            'prod_type': $scope.prod_type,
-            'prod_quantity': $scope.prod_quantity,
-            'prod_threshold': $scope.prod_threshold,
-            'prod_instock': $scope.prod_instock
+    $scope.Edit = function (prd) {
+        var ToEdit = {
+            'prod_id': prd.prod_id,
+            'prod_name': prd.prod_name,
+            'prod_price': prd.prod_price,
+            'prod_desc': prd.prod_desc,
+            'prod_type': prd.prod_type,
+            'prod_quantity': prd.prod_quantity,
+            'prod_threshold': prd.prod_threshold,
+            'prod_instock': prd.prod_instock
         };
-        UserApi.updateProduct(ProToEdit).then(function (response) {
+        console.log(ToEdit);
+        UserApi.Edit(ToEdit).then(function (response) {
             alert("Quantity Successfully Updated");
-            $scope.prod_id = undefined;
-            $scope.prod_name = undefined;
-            $scope.prod_price = undefined;
-            $scope.prod_desc = undefined;
-            $scope.prod_type = undefined;
-            $scope.prod_quantity = undefined;
-            $scope.prod_threshold = undefined;
-            $scope.prod_instock = undefined;
+            //$scope.prod_id = undefined;
+            //$scope.prod_name = undefined;
+            //$scope.prod_price = undefined;
+            //$scope.prod_desc = undefined;
+            //$scope.prod_type = undefined;
+            $scope.prod_quantity = prd.prod_quantity;
+            //$scope.prod_threshold = undefined;
+            //$scope.prod_instock = undefined;
             GetProduct();
             $location.path('/SProduct');
         }),
@@ -429,7 +429,6 @@ angularApp.controller("CartController", function ($scope, $location, CommonProp,
 angularApp.controller("HomeController", function ($scope, UserApi, $location, $rootScope) { });
 
 angularApp.controller("SHomeController", function ($scope, UserApi, $location, $rootScope) { });
-
 angularApp.controller("CPaymentController", function ($scope, UserApi, $rootScope, $location, $http, $window) {
     GetUsers();     //Get user details first
     function GetUsers() {
@@ -945,26 +944,28 @@ angularApp.controller("SViewProductsController", function ($scope, UserApi, $loc
         }
     }
 
-    $scope.updateProduct = function () {
-        var ProToEdit = {
-            'prod_id':$scope.prod_id,
-            'prod_name': $scope.prod_name,
-            'prod_price': $scope.prod_price,
-            'prod_desc': $scope.prod_desc,
-            'prod_type': $scope.prod_type,
-            'prod_quantity': $scope.prod_quantity
-
-            
+    $scope.Edit = function (prd) {
+        var ToEdit = {
+            'prod_id': prd.prod_id,
+            'prod_name': prd.prod_name,
+            'prod_price': prd.prod_price,
+            'prod_desc': prd.prod_desc,
+            'prod_type': prd.prod_type,
+            'prod_quantity': prd.prod_quantity,
+            'prod_threshold': prd.prod_threshold,
+            'prod_instock': prd.prod_instock
         };
-
-        UserApi.updateProduct(ProToEdit).then(function (response) {
+        console.log(ToEdit);
+        UserApi.Edit(ToEdit).then(function (response) {
             alert("Quantity Successfully Updated");
-            $scope.prod_id = undefined;
-            $scope.prod_name = undefined;
-            $scope.prod_price = undefined;
-            $scope.prod_desc = undefined;
-            $scope.prod_type = undefined;
-            $scope.prod_quantity = undefined;
+            //$scope.prod_id = undefined;
+            //$scope.prod_name = undefined;
+            //$scope.prod_price = undefined;
+            //$scope.prod_desc = undefined;
+            //$scope.prod_type = undefined;
+            $scope.prod_quantity = prd.prod_quantity;
+            //$scope.prod_threshold = undefined;
+            //$scope.prod_instock = undefined;
             GetProduct();
             $location.path('/SProduct');
         }),

@@ -6,7 +6,8 @@
 </head>
 <body ng-controller="CViewProductsController">
     <form>
-        <table class="table table-hover"> <!-- cellspacing="40" align="center" style="width:95%" --> 
+        <table class="table table-hover">
+            <!-- cellspacing="40" align="center" style="width:95%" -->
             <thead class="grid-top panel">
                 <tr>
                     <!--<th>Product Logo</th>-->
@@ -30,8 +31,8 @@
                     <td>{{prd.prod_threshold}}</td>
                     <td>{{prd.prod_instock}}</td>
                     <td>
-                        <input class="form-control" type="number" ng-model="ProToEdit.prod_quantity" min="1" />
-                        <br /><br /><a class="btn btn-success" ng-click="updateProduct(prd)">Update quanity</a><br /><br />
+                        <input class="form-control" type="number" ng-model="prd.prod_quantity" min="1" />
+                        <br /><br /><a class="btn btn-success" ng-click="Edit(prd)">Update quanity</a><br /><br />
                     </td>
 
                 </tr>
