@@ -14,7 +14,7 @@ namespace NetFloristNewApp18.Controllers
 {
     public class AdminsController : ApiController
     {
-        private NewModel db = new NewModel();
+        private NetFloristNewApp18dbEntities2 db = new NetFloristNewApp18dbEntities2();
 
         // GET: api/Admins
         public IQueryable<Admin> GetAdmins()
@@ -24,19 +24,20 @@ namespace NetFloristNewApp18.Controllers
 
         // GET: api/Admins/5
         [ResponseType(typeof(Admin))]
-        public IHttpActionResult GetAdmin(string ad_email, string ad_password)
+        public IHttpActionResult Getsupplier(string ad_email, string ad_password)
         {
-            Admin drv = db.Admins.Where(adm => adm.ad_email.Equals(ad_email) && adm.ad_password.Equals(ad_password)).FirstOrDefault();
+           Admin supp = db.Admins.Where(adm => adm.ad_email.Equals(ad_email) &&
+                adm.ad_password.Equals(ad_password)).FirstOrDefault();
             if (ad_email == null && ad_password == null)
             {
                 return (null);
             }
             else
             {
-                return Ok(drv);
+                return Ok(supp);
             }
-        }
 
+        }
         // PUT: api/Admins/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAdmin(int id, Admin admin)

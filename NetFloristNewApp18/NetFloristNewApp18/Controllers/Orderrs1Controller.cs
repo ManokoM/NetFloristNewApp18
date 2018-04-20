@@ -12,17 +12,17 @@ using NetFloristNewApp18.Models;
 
 namespace NetFloristNewApp18.Controllers
 {
-    public class OrderrsController : ApiController
+    public class Orderrs1Controller : ApiController
     {
         private NetFloristNewApp18dbEntities2 db = new NetFloristNewApp18dbEntities2();
 
-        // GET: api/Orderrs
+        // GET: api/Orderrs1
         public IQueryable<Orderr> GetOrderrs()
         {
             return db.Orderrs;
         }
 
-        // GET: api/Orderrs/5
+        // GET: api/Orderrs1/5
         [ResponseType(typeof(Orderr))]
         public IHttpActionResult GetOrderr(int id)
         {
@@ -35,7 +35,7 @@ namespace NetFloristNewApp18.Controllers
             return Ok(orderr);
         }
 
-        // PUT: api/Orderrs/5
+        // PUT: api/Orderrs1/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrderr(int id, Orderr orderr)
         {
@@ -70,7 +70,7 @@ namespace NetFloristNewApp18.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Orderrs
+        // POST: api/Orderrs1
         [ResponseType(typeof(Orderr))]
         public IHttpActionResult PostOrderr(Orderr orderr)
         {
@@ -85,7 +85,7 @@ namespace NetFloristNewApp18.Controllers
             return CreatedAtRoute("DefaultApi", new { id = orderr.ord_id }, orderr);
         }
 
-        // DELETE: api/Orderrs/5
+        // DELETE: api/Orderrs1/5
         [ResponseType(typeof(Orderr))]
         public IHttpActionResult DeleteOrderr(int id)
         {
@@ -114,5 +114,15 @@ namespace NetFloristNewApp18.Controllers
         {
             return db.Orderrs.Count(e => e.ord_id == id) > 0;
         }
+
+        [Route("api/GetDriverOrders")]
+        public IEnumerable<DriversOrderss_Details> getOrders()
+        {
+            Drivers_Orderss_Result oj = new Drivers_Orderss_Result();
+            var result = db.Database.SqlQuery<DriversOrderss_Details>("SELECT ord_id, totalPrice, ord_country,ord_street,ord_city,ord_province, email, ord_status, ord_deliveryStatus FROM dbo.[Orderr] WHERE ord_status = 'Ready for pick up'");
+
+            return result;
+        }
+
     }
 }

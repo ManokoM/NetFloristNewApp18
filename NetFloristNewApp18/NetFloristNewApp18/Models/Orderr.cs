@@ -18,7 +18,6 @@ namespace NetFloristNewApp18.Models
         public Orderr()
         {
             this.Drivers = new HashSet<Driver>();
-            this.Ord_Tbl = new HashSet<Ord_Tbl>();
         }
     
         public int ord_id { get; set; }
@@ -33,8 +32,6 @@ namespace NetFloristNewApp18.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Driver> Drivers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ord_Tbl> Ord_Tbl { get; set; }
         public virtual Table Table { get; set; }
     }
 }

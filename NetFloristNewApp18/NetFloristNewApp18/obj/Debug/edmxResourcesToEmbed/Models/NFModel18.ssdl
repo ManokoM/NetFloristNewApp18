@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NetFloristNewApp18dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ad_firstname" Type="varchar(max)" Nullable="false" />
+    <Property Name="ad_lastname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ad_cell" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ad_password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="d_id" />
+    </Key>
+    <Property Name="d_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="d_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="d_firstname" Type="varchar(max)" Nullable="false" />
+    <Property Name="d_lastname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="d_cell" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="d_password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ord_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Ord_Tbl">
+    <Key>
+      <PropertyRef Name="op_id" />
+    </Key>
+    <Property Name="op_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="Orderr">
+    <Key>
+      <PropertyRef Name="ord_id" />
+    </Key>
+    <Property Name="ord_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="totalPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ord_street" Type="varchar" MaxLength="50" />
+    <Property Name="ord_city" Type="varchar" MaxLength="50" />
+    <Property Name="ord_province" Type="varchar" MaxLength="50" />
+    <Property Name="ord_country" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ord_status" Type="varchar" MaxLength="50" />
+    <Property Name="ord_deliveryStatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="payment_id" />
+    </Key>
+    <Property Name="payment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="card_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="card_CCV" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="card_expMonth" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="card_expYear" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pay_date" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="prod_id" />
+    </Key>
+    <Property Name="prod_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prod_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="prod_price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="prod_type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="prod_desc" Type="varchar(max)" Nullable="false" />
+    <Property Name="prod_quantity" Type="int" />
+    <Property Name="prod_threshold" Type="int" />
+    <Property Name="prod_instock" Type="int" />
+  </EntityType>
+  <EntityType Name="ProImage">
+    <Key>
+      <PropertyRef Name="img_id" />
+    </Key>
+    <Property Name="img_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+    <Property Name="prod_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="supp_id" />
+    </Key>
+    <Property Name="supp_id" Type="int" Nullable="false" />
+    <Property Name="s_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="s_password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="s_contact" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="firstname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="contact" Type="int" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NETFLORISTNEWAPP18DB.MDF.dbo.PRODUCT_VIEWS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PRODUCT_VIEWS">
+    <Key>
+      <PropertyRef Name="prod_id" />
+      <PropertyRef Name="prod_name" />
+      <PropertyRef Name="prod_price" />
+      <PropertyRef Name="prod_desc" />
+      <PropertyRef Name="Image" />
+    </Key>
+    <Property Name="prod_id" Type="int" Nullable="false" />
+    <Property Name="prod_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="prod_price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="prod_desc" Type="varchar(max)" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_order">
+    <End Role="Table" Type="Self.Table" Multiplicity="1" />
+    <End Role="Orderr" Type="Self.Orderr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Orderr">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_order_">
+    <End Role="Orderr" Type="Self.Orderr" Multiplicity="0..1" />
+    <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orderr">
+        <PropertyRef Name="ord_id" />
+      </Principal>
+      <Dependent Role="Driver">
+        <PropertyRef Name="ord_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_payment">
+    <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProImage" Type="Self.ProImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="prod_id" />
+      </Principal>
+      <Dependent Role="ProImage">
+        <PropertyRef Name="prod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DriverOrderss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Drivers_Orderss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllOrdersss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="NetFloristNewApp18dbModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ord_Tbl" EntityType="Self.Ord_Tbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orderr" EntityType="Self.Orderr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProImage" EntityType="Self.ProImage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="supplier" EntityType="Self.supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCT_VIEWS" EntityType="Self.PRODUCT_VIEWS" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PRODUCT_VIEWS].[prod_id] AS [prod_id], 
+    [PRODUCT_VIEWS].[prod_name] AS [prod_name], 
+    [PRODUCT_VIEWS].[prod_price] AS [prod_price], 
+    [PRODUCT_VIEWS].[prod_desc] AS [prod_desc], 
+    [PRODUCT_VIEWS].[Image] AS [Image]
+    FROM [dbo].[PRODUCT_VIEWS] AS [PRODUCT_VIEWS]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_order" Association="Self.fk_order">
+      <End Role="Table" EntitySet="Table" />
+      <End Role="Orderr" EntitySet="Orderr" />
+    </AssociationSet>
+    <AssociationSet Name="fk_order_" Association="Self.fk_order_">
+      <End Role="Orderr" EntitySet="Orderr" />
+      <End Role="Driver" EntitySet="Driver" />
+    </AssociationSet>
+    <AssociationSet Name="fk_payment" Association="Self.fk_payment">
+      <End Role="Table" EntitySet="Table" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_product" Association="Self.fk_product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProImage" EntitySet="ProImage" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

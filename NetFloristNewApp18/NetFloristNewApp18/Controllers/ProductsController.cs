@@ -14,7 +14,7 @@ namespace NetFloristNewApp18.Controllers
 {
     public class ProductsController : ApiController
     {
-        private NewModel db = new NewModel();
+        private NetFloristNewApp18dbEntities2 db = new NetFloristNewApp18dbEntities2();
 
         // GET: api/Products
         public IQueryable<Product> GetProducts()
@@ -114,6 +114,8 @@ namespace NetFloristNewApp18.Controllers
         {
             return db.Products.Count(e => e.prod_id == id) > 0;
         }
+
+
         [Route("api/GetProductImage")]
         public IEnumerable<ProductViewController> GetProductImage()
         {
@@ -121,6 +123,5 @@ namespace NetFloristNewApp18.Controllers
             var ProductImage = db.Database.SqlQuery<ProductViewController>("SELECT Product.prod_id,Product.prod_name,Product.prod_price, Product.prod_desc,ProImage.Image FROM Product INNER JOIN ProImage ON Product.prod_id=ProImage.prod_id ORDER BY Product.prod_name ASC");
             return ProductImage;
         }
-
     }
 }

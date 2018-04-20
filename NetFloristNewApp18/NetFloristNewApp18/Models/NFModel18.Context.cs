@@ -15,10 +15,10 @@ namespace NetFloristNewApp18.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class NewModel : DbContext
+    public partial class NetFloristNewApp18dbEntities2 : DbContext
     {
-        public NewModel()
-            : base("name=NewModel")
+        public NetFloristNewApp18dbEntities2()
+            : base("name=NetFloristNewApp18dbEntities2")
         {
         }
     
@@ -32,11 +32,11 @@ namespace NetFloristNewApp18.Models
         public virtual DbSet<Ord_Tbl> Ord_Tbl { get; set; }
         public virtual DbSet<Orderr> Orderrs { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
-        public virtual DbSet<ProImage> ProImages { get; set; }
-        public virtual DbSet<PRODUCT_VIEWS> PRODUCT_VIEWS { get; set; }
-        public virtual DbSet<supplier> suppliers { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProImage> ProImages { get; set; }
+        public virtual DbSet<supplier> suppliers { get; set; }
         public virtual DbSet<Table> Tables { get; set; }
+        public virtual DbSet<PRODUCT_VIEWS> PRODUCT_VIEWS { get; set; }
     
         public virtual ObjectResult<DriverOrderss_Result> DriverOrderss()
         {

@@ -14,7 +14,7 @@ namespace NetFloristNewApp18.Controllers
 {
     public class TablesController : ApiController
     {
-        private NewModel db = new NewModel();
+        private NetFloristNewApp18dbEntities2 db = new NetFloristNewApp18dbEntities2();
 
         // GET: api/Tables
         public IQueryable<Table> GetTables()
@@ -24,7 +24,7 @@ namespace NetFloristNewApp18.Controllers
 
         // GET: api/Tables/5
         [ResponseType(typeof(Table))]
-        public IHttpActionResult GetTable(string email, string password )
+        public IHttpActionResult GetTable(string email, string password)
         {
             Table cust = db.Tables.Where(adm => adm.email.Equals(email) &&
                 adm.password.Equals(password)).FirstOrDefault();
@@ -38,42 +38,42 @@ namespace NetFloristNewApp18.Controllers
             }
 
         }
+
         // PUT: api/Tables/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutTable(string id, Table table)
         {
-
-            Console.WriteLine("Hello");
-            Table oldDetails = table;
-
-
             if (!ModelState.IsValid)
             {
-                return BadRequest("Not valid data");
+                return BadRequest(ModelState);
             }
 
-
-            using (db)
+            if (id != table.email)
             {
-                var cust = db.Tables.Where(g => g.id.Equals(id)).FirstOrDefault();
-                if (cust != null)
-                {
-                    cust.firstname = table.firstname;
-                    cust.lastname = table.lastname;
-                    cust.contact = table.contact;
-                    cust.email = table.email;
-                    cust.password = table.password;
+                return BadRequest();
+            }
 
-                    var res = db.SaveChanges();
+            db.Entry(table).State = EntityState.Modified;
 
-                }
-                else
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TableExists(id))
                 {
                     return NotFound();
                 }
+                else
+                {
+                    throw;
+                }
             }
-            return Ok();
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
+
         // POST: api/Tables
         [ResponseType(typeof(Table))]
         public IHttpActionResult PostTable(Table table)

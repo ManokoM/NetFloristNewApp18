@@ -14,7 +14,7 @@ namespace NetFloristNewApp18.Controllers
 {
     public class DriversController : ApiController
     {
-        private NewModel db = new NewModel();
+        private NetFloristNewApp18dbEntities2 db = new NetFloristNewApp18dbEntities2();
 
         // GET: api/Drivers
         public IQueryable<Driver> GetDrivers()
@@ -37,41 +37,39 @@ namespace NetFloristNewApp18.Controllers
             }
         }
 
-
         // PUT: api/Drivers/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutDriver(int id, Driver driver)
         {
-            Console.WriteLine("Hello");
-            Driver oldDetails = driver;
-
-
             if (!ModelState.IsValid)
             {
-                return BadRequest("Not valid data");
+                return BadRequest(ModelState);
             }
 
-
-            using (db)
+            if (id != driver.d_id)
             {
-                var drvr = db.Drivers.Where(g => g.d_id.Equals(id)).FirstOrDefault();
-                if (drvr != null)
-                {
-                    drvr.d_firstname = driver.d_firstname;
-                    drvr.d_lastname = driver.d_lastname;
-                    drvr.d_cell = driver.d_cell;
-                    drvr.d_email = driver.d_email;
-                    drvr.d_password = driver.d_password;
+                return BadRequest();
+            }
 
-                    var res = db.SaveChanges();
+            db.Entry(driver).State = EntityState.Modified;
 
-                }
-                else
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!DriverExists(id))
                 {
                     return NotFound();
                 }
+                else
+                {
+                    throw;
+                }
             }
-            return Ok();
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Drivers

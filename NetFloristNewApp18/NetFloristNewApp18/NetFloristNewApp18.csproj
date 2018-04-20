@@ -134,15 +134,6 @@
     <Content Include="DViews\PickedOrders.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\0c85ac637cc20eb8cfc7a5f29566b718.png" />
-    <Content Include="Images\28653641455715p.jpg" />
-    <Content Include="Images\71zx+2rECUL._SL1200_.jpg" />
-    <Content Include="Images\almastba.com_1389443279_188.jpg" />
-    <Content Include="Images\d6c7285319cbe317b2bd2eeb373db8dc.jpg" />
-    <Content Include="Images\E-8.jpg" />
-    <Content Include="Images\f94886be2c0a032c88e7f1bb194fc257.jpg" />
-    <Content Include="Images\letter-o-hi.png" />
-    <Content Include="Images\r-400.png" />
     <Content Include="index.html" />
     <Content Include="fonts\Scripts\angular-animate.js" />
     <Content Include="fonts\Scripts\angular-animate.min.js" />
@@ -912,20 +903,20 @@
     <Content Include="fonts\Scripts\i18n\angular-locale_zu.js" />
     <Content Include="ClassDiagram1.cd" />
     <Content Include="fonts\Scripts\jquery-3.3.1.js.txt" />
-    <Content Include="Models\NewModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NewModel.edmx</DependentUpon>
-      <LastGenOutput>NewModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\NewModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NewModel.edmx</DependentUpon>
-      <LastGenOutput>NewModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Content\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Models\NFModel18.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NFModel18.edmx</DependentUpon>
+      <LastGenOutput>NFModel18.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NFModel18.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NFModel18.edmx</DependentUpon>
+      <LastGenOutput>NFModel18.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -1708,69 +1699,70 @@
     <Compile Include="Controllers\DriversController.cs" />
     <Compile Include="Controllers\DriversOrders_Details.cs" />
     <Compile Include="Controllers\OrderDetails.cs" />
+    <Compile Include="Controllers\Orderrs1Controller.cs" />
     <Compile Include="Controllers\OrderrsController.cs" />
     <Compile Include="Controllers\Ord_TblController.cs" />
-    <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductViewController.cs" />
+    <Compile Include="Controllers\ProImagesController.cs" />
     <Compile Include="Controllers\suppliersController.cs" />
     <Compile Include="Controllers\TablesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Driver.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DriverOrderss_Result.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Drivers_Orderss_Result.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetAllOrdersss_Result.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NewModel.Context.cs">
+    <Compile Include="Models\NFModel18.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NewModel.Context.tt</DependentUpon>
+      <DependentUpon>NFModel18.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NewModel.cs">
+    <Compile Include="Models\NFModel18.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NewModel.Designer.cs">
+    <Compile Include="Models\NFModel18.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NewModel.edmx</DependentUpon>
+      <DependentUpon>NFModel18.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Orderr.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ord_Tbl.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Payment.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PRODUCT_VIEWS.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProImage.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\supplier.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Table.cs">
-      <DependentUpon>NewModel.tt</DependentUpon>
+      <DependentUpon>NFModel18.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1802,13 +1794,6 @@
     <Content Include="ClassDiagram3.cd" />
     <Content Include="ClassDiagram4.cd" />
     <Content Include="ClassDiagram5.cd" />
-    <EntityDeploy Include="Models\NewModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NewModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\NewModel.edmx.diagram">
-      <DependentUpon>NewModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-cookies.min.js.map" />
@@ -1824,6 +1809,13 @@
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\version.json" />
     <Content Include="ClassDiagram6.cd" />
+    <EntityDeploy Include="Models\NFModel18.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NFModel18.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NFModel18.edmx.diagram">
+      <DependentUpon>NFModel18.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

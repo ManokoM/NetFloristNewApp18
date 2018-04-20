@@ -17,7 +17,6 @@ namespace NetFloristNewApp18.Models
         public int op_id { get; set; }
         public int pro_id { get; set; }
         public int order_id { get; set; }
-    
-        public virtual Orderr Orderr { get; set; }
+        public Nullable<int> quantity { get; set; }
     }
 }

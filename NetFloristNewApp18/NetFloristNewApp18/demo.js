@@ -351,6 +351,7 @@ angularApp.controller('CheckOutController', function ($scope, $location, CommonP
         $rootScope.updatePrice();
     }
 
+    //prodid + quantity
     //$scope.total = function () {
     //    var totalPrice = CommonProp.getTotal();
     //    return totalPrice;

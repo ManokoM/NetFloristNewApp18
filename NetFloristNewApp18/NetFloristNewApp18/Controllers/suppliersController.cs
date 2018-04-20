@@ -14,7 +14,7 @@ namespace NetFloristNewApp18.Controllers
 {
     public class suppliersController : ApiController
     {
-        private NewModel db = new NewModel();
+        private NetFloristNewApp18dbEntities2 db = new NetFloristNewApp18dbEntities2();
 
         // GET: api/suppliers
         public IQueryable<supplier> Getsuppliers()
@@ -38,8 +38,6 @@ namespace NetFloristNewApp18.Controllers
             }
 
         }
-
-
         // PUT: api/suppliers/5
         [ResponseType(typeof(void))]
         public IHttpActionResult Putsupplier(int id, supplier supplier)

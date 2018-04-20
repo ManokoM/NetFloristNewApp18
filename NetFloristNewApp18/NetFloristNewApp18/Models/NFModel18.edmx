@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="NetFloristNewApp18dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="NetFloristNewApp18dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="admin_id" />
@@ -35,6 +35,7 @@
           <Property Name="op_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pro_id" Type="int" Nullable="false" />
           <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" />
         </EntityType>
         <EntityType Name="Orderr">
           <Key>
@@ -104,7 +105,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.dbo.PRODUCT_VIEWS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NETFLORISTNEWAPP18DB.MDF.dbo.PRODUCT_VIEWS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PRODUCT_VIEWS">
           <Key>
             <PropertyRef Name="prod_id" />
@@ -119,18 +120,6 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
           <Property Name="prod_desc" Type="varchar(max)" Nullable="false" />
           <Property Name="Image" Type="varbinary(max)" Nullable="false" />
         </EntityType>
-        <Association Name="fk_ordeid">
-          <End Role="Orderr" Type="Self.Orderr" Multiplicity="1" />
-          <End Role="Ord_Tbl" Type="Self.Ord_Tbl" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Orderr">
-              <PropertyRef Name="ord_id" />
-            </Principal>
-            <Dependent Role="Ord_Tbl">
-              <PropertyRef Name="order_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_order">
           <End Role="Table" Type="Self.Table" Multiplicity="1" />
           <End Role="Orderr" Type="Self.Orderr" Multiplicity="*" />
@@ -201,10 +190,6 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
     [PRODUCT_VIEWS].[Image] AS [Image]
     FROM [dbo].[PRODUCT_VIEWS] AS [PRODUCT_VIEWS]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="fk_ordeid" Association="Self.fk_ordeid">
-            <End Role="Orderr" EntitySet="Orderr" />
-            <End Role="Ord_Tbl" EntitySet="Ord_Tbl" />
-          </AssociationSet>
           <AssociationSet Name="fk_order" Association="Self.fk_order">
             <End Role="Table" EntitySet="Table" />
             <End Role="Orderr" EntitySet="Orderr" />
@@ -222,7 +207,8 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
             <End Role="ProImage" EntitySet="ProImage" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NetFloristNewApp18dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -257,7 +243,7 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
           <Property Name="op_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pro_id" Type="Int32" Nullable="false" />
           <Property Name="order_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Orderr" Relationship="NetFloristNewApp18dbModel.fk_ordeid" FromRole="Ord_Tbl" ToRole="Orderr" />
+          <Property Name="quantity" Type="Int32" />
         </EntityType>
         <EntityType Name="Orderr">
           <Key>
@@ -273,8 +259,7 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
           <Property Name="ord_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ord_deliveryStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Drivers" Relationship="Self.fk_order_" FromRole="Orderr" ToRole="Driver" />
-          <NavigationProperty Name="Ord_Tbl" Relationship="NetFloristNewApp18dbModel.fk_ordeid" FromRole="Orderr" ToRole="Ord_Tbl" />
-          <NavigationProperty Name="Table" Relationship="NetFloristNewApp18dbModel.fk_order" FromRole="Orderr" ToRole="Table" />
+          <NavigationProperty Name="Table" Relationship="Self.fk_order" FromRole="Orderr" ToRole="Table" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -287,7 +272,21 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
           <Property Name="card_expYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pay_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Table" Relationship="NetFloristNewApp18dbModel.fk_payment" FromRole="Payment" ToRole="Table" />
+          <NavigationProperty Name="Table" Relationship="Self.fk_payment" FromRole="Payment" ToRole="Table" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="prod_id" />
+          </Key>
+          <Property Name="prod_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prod_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prod_price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="prod_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prod_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prod_quantity" Type="Int32" />
+          <Property Name="prod_threshold" Type="Int32" />
+          <Property Name="prod_instock" Type="Int32" />
+          <NavigationProperty Name="ProImages" Relationship="Self.fk_product" FromRole="Product" ToRole="ProImage" />
         </EntityType>
         <EntityType Name="ProImage">
           <Key>
@@ -296,10 +295,46 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
           <Property Name="img_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="prod_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="NetFloristNewApp18dbModel.fk_product" FromRole="ProImage" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.fk_product" FromRole="ProImage" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="supplier">
+          <Key>
+            <PropertyRef Name="supp_id" />
+          </Key>
+          <Property Name="supp_id" Type="Int32" Nullable="false" />
+          <Property Name="s_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="s_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="s_contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contact" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Orderrs" Relationship="Self.fk_order" FromRole="Table" ToRole="Orderr" />
+          <NavigationProperty Name="Payments" Relationship="Self.fk_payment" FromRole="Table" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="PRODUCT_VIEWS">
+          <Key>
+            <PropertyRef Name="prod_id" />
+            <PropertyRef Name="prod_name" />
+            <PropertyRef Name="prod_price" />
+            <PropertyRef Name="prod_desc" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="prod_id" Type="Int32" Nullable="false" />
+          <Property Name="prod_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prod_price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="prod_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
         </EntityType>
         <Association Name="fk_order_">
-          <End Role="Orderr" Type="NetFloristNewApp18dbModel.Orderr" Multiplicity="0..1" />
+          <End Role="Orderr" Type="Self.Orderr" Multiplicity="0..1" />
           <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Orderr">
@@ -310,67 +345,73 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="NewModel" annotation:LazyLoadingEnabled="true">
+        <Association Name="fk_order">
+          <End Role="Table" Type="Self.Table" Multiplicity="1" />
+          <End Role="Orderr" Type="Self.Orderr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Orderr">
+              <PropertyRef Name="email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_payment">
+          <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProImage" Type="Self.ProImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="prod_id" />
+            </Principal>
+            <Dependent Role="ProImage">
+              <PropertyRef Name="prod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NetFloristNewApp18dbEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Drivers" EntityType="Self.Driver" />
           <EntitySet Name="Ord_Tbl" EntityType="Self.Ord_Tbl" />
-          <EntitySet Name="Orderrs" EntityType="NetFloristNewApp18dbModel.Orderr" />
+          <EntitySet Name="Orderrs" EntityType="Self.Orderr" />
           <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="ProImages" EntityType="Self.ProImage" />
+          <EntitySet Name="suppliers" EntityType="Self.supplier" />
+          <EntitySet Name="Tables" EntityType="Self.Table" />
+          <EntitySet Name="PRODUCT_VIEWS" EntityType="Self.PRODUCT_VIEWS" />
           <AssociationSet Name="fk_order_" Association="Self.fk_order_">
             <End Role="Orderr" EntitySet="Orderrs" />
             <End Role="Driver" EntitySet="Drivers" />
           </AssociationSet>
-          <AssociationSet Name="fk_ordeid" Association="NetFloristNewApp18dbModel.fk_ordeid">
-            <End Role="Orderr" EntitySet="Orderrs" />
-            <End Role="Ord_Tbl" EntitySet="Ord_Tbl" />
-          </AssociationSet>
-          <EntitySet Name="PRODUCT_VIEWS" EntityType="NetFloristNewApp18dbModel.PRODUCT_VIEWS" />
-          <FunctionImport Name="DriverOrderss" ReturnType="Collection(NetFloristNewApp18dbModel.DriverOrderss_Result)" />
-          <FunctionImport Name="Drivers_Orderss" ReturnType="Collection(NetFloristNewApp18dbModel.Drivers_Orderss_Result)" />
-          <FunctionImport Name="GetAllOrdersss" ReturnType="Collection(NetFloristNewApp18dbModel.GetAllOrdersss_Result)" />
-          <EntitySet Name="suppliers" EntityType="NetFloristNewApp18dbModel.supplier" />
-          <EntitySet Name="Products" EntityType="NetFloristNewApp18dbModel.Product" />
-          <AssociationSet Name="fk_product" Association="NetFloristNewApp18dbModel.fk_product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ProImage" EntitySet="ProImages" />
-          </AssociationSet>
-          <EntitySet Name="Tables" EntityType="NetFloristNewApp18dbModel.Table" />
-          <AssociationSet Name="fk_order" Association="NetFloristNewApp18dbModel.fk_order">
+          <AssociationSet Name="fk_order" Association="Self.fk_order">
             <End Role="Table" EntitySet="Tables" />
             <End Role="Orderr" EntitySet="Orderrs" />
           </AssociationSet>
-          <AssociationSet Name="fk_payment" Association="NetFloristNewApp18dbModel.fk_payment">
+          <AssociationSet Name="fk_payment" Association="Self.fk_payment">
             <End Role="Table" EntitySet="Tables" />
             <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
-          </EntityContainer>
-        <Association Name="fk_ordeid">
-          <End Type="NetFloristNewApp18dbModel.Orderr" Role="Orderr" Multiplicity="1" />
-          <End Type="NetFloristNewApp18dbModel.Ord_Tbl" Role="Ord_Tbl" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Orderr">
-              <PropertyRef Name="ord_id" />
-            </Principal>
-            <Dependent Role="Ord_Tbl">
-              <PropertyRef Name="order_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="PRODUCT_VIEWS">
-          <Key>
-            <PropertyRef Name="prod_id" />
-            <PropertyRef Name="prod_name" />
-            <PropertyRef Name="prod_price" />
-            <PropertyRef Name="prod_desc" />
-            <PropertyRef Name="Image" />
-          </Key>
-          <Property Name="prod_id" Type="Int32" Nullable="false" />
-          <Property Name="prod_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="prod_price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="prod_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-        </EntityType>
+          <AssociationSet Name="fk_product" Association="Self.fk_product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProImage" EntitySet="ProImages" />
+          </AssociationSet>
+          <FunctionImport Name="DriverOrderss" ReturnType="Collection(NetFloristNewApp18dbModel.DriverOrderss_Result)" />
+          <FunctionImport Name="Drivers_Orderss" ReturnType="Collection(NetFloristNewApp18dbModel.Drivers_Orderss_Result)" />
+          <FunctionImport Name="GetAllOrdersss" ReturnType="Collection(NetFloristNewApp18dbModel.GetAllOrdersss_Result)" />
+        </EntityContainer>
         <ComplexType Name="DriverOrderss_Result">
           <Property Type="Int32" Name="ord_id" Nullable="false" />
           <Property Type="Int32" Name="Number_of_Items" Nullable="true" />
@@ -402,84 +443,12 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
           <Property Type="String" Name="ord_province" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ord_deliveryStatus" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <EntityType Name="supplier">
-          <Key>
-            <PropertyRef Name="supp_id" />
-          </Key>
-          <Property Name="supp_id" Type="Int32" Nullable="false" />
-          <Property Name="s_email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="s_password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="s_contact" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="prod_id" />
-          </Key>
-          <Property Name="prod_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="prod_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="prod_price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="prod_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="prod_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="prod_quantity" Type="Int32" />
-          <Property Name="prod_threshold" Type="Int32" />
-          <Property Name="prod_instock" Type="Int32" />
-          <NavigationProperty Name="ProImages" Relationship="NetFloristNewApp18dbModel.fk_product" FromRole="Product" ToRole="ProImage" />
-        </EntityType>
-        <Association Name="fk_product">
-          <End Type="NetFloristNewApp18dbModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="NetFloristNewApp18dbModel.ProImage" Role="ProImage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="prod_id" />
-            </Principal>
-            <Dependent Role="ProImage">
-              <PropertyRef Name="prod_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="email" />
-          </Key>
-          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="contact" Type="Int32" Nullable="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Orderrs" Relationship="NetFloristNewApp18dbModel.fk_order" FromRole="Table" ToRole="Orderr" />
-          <NavigationProperty Name="Payments" Relationship="NetFloristNewApp18dbModel.fk_payment" FromRole="Table" ToRole="Payment" />
-        </EntityType>
-        <Association Name="fk_order">
-          <End Type="NetFloristNewApp18dbModel.Table" Role="Table" Multiplicity="1" />
-          <End Type="NetFloristNewApp18dbModel.Orderr" Role="Orderr" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Table">
-              <PropertyRef Name="email" />
-            </Principal>
-            <Dependent Role="Orderr">
-              <PropertyRef Name="email" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_payment">
-          <End Type="NetFloristNewApp18dbModel.Table" Role="Table" Multiplicity="0..1" />
-          <End Type="NetFloristNewApp18dbModel.Payment" Role="Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Table">
-              <PropertyRef Name="email" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="email" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="NetFloristNewApp18dbModelStoreContainer" CdmEntityContainer="NewModel">
+        <EntityContainerMapping StorageEntityContainer="NetFloristNewApp18dbModelStoreContainer" CdmEntityContainer="NetFloristNewApp18dbEntities2">
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
@@ -511,6 +480,7 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
                 <ScalarProperty Name="op_id" ColumnName="op_id" />
                 <ScalarProperty Name="pro_id" ColumnName="pro_id" />
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -542,6 +512,20 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+                <ScalarProperty Name="prod_name" ColumnName="prod_name" />
+                <ScalarProperty Name="prod_price" ColumnName="prod_price" />
+                <ScalarProperty Name="prod_type" ColumnName="prod_type" />
+                <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
+                <ScalarProperty Name="prod_quantity" ColumnName="prod_quantity" />
+                <ScalarProperty Name="prod_threshold" ColumnName="prod_threshold" />
+                <ScalarProperty Name="prod_instock" ColumnName="prod_instock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ProImages">
             <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.ProImage">
               <MappingFragment StoreEntitySet="ProImage">
@@ -551,14 +535,36 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="suppliers">
+            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.supplier">
+              <MappingFragment StoreEntitySet="supplier">
+                <ScalarProperty Name="supp_id" ColumnName="supp_id" />
+                <ScalarProperty Name="s_email" ColumnName="s_email" />
+                <ScalarProperty Name="s_password" ColumnName="s_password" />
+                <ScalarProperty Name="s_contact" ColumnName="s_contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PRODUCT_VIEWS">
             <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.PRODUCT_VIEWS">
               <MappingFragment StoreEntitySet="PRODUCT_VIEWS">
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
-                <ScalarProperty Name="prod_price" ColumnName="prod_price" />
-                <ScalarProperty Name="prod_name" ColumnName="prod_name" />
                 <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+                <ScalarProperty Name="prod_name" ColumnName="prod_name" />
+                <ScalarProperty Name="prod_price" ColumnName="prod_price" />
+                <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -605,42 +611,6 @@ warning 6002: The table/view 'C:\USERS\USER\DOCUMENTS\NETFLORISTNEWAPP18DB.MDF.d
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="suppliers">
-            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.supplier">
-              <MappingFragment StoreEntitySet="supplier">
-                <ScalarProperty Name="s_contact" ColumnName="s_contact" />
-                <ScalarProperty Name="s_password" ColumnName="s_password" />
-                <ScalarProperty Name="s_email" ColumnName="s_email" />
-                <ScalarProperty Name="supp_id" ColumnName="supp_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="prod_instock" ColumnName="prod_instock" />
-                <ScalarProperty Name="prod_threshold" ColumnName="prod_threshold" />
-                <ScalarProperty Name="prod_quantity" ColumnName="prod_quantity" />
-                <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
-                <ScalarProperty Name="prod_type" ColumnName="prod_type" />
-                <ScalarProperty Name="prod_price" ColumnName="prod_price" />
-                <ScalarProperty Name="prod_name" ColumnName="prod_name" />
-                <ScalarProperty Name="prod_id" ColumnName="prod_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tables">
-            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Table">
-              <MappingFragment StoreEntitySet="Table">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="contact" ColumnName="contact" />
-                <ScalarProperty Name="lastname" ColumnName="lastname" />
-                <ScalarProperty Name="firstname" ColumnName="firstname" />
-                <ScalarProperty Name="email" ColumnName="email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

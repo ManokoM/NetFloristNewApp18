@@ -14,7 +14,7 @@ namespace NetFloristNewApp18.Controllers
 {
     public class Ord_TblController : ApiController
     {
-        private NewModel db = new NewModel();
+        private NetFloristNewApp18dbEntities2 db = new NetFloristNewApp18dbEntities2();
 
         // GET: api/Ord_Tbl
         public IQueryable<Ord_Tbl> GetOrd_Tbl()
@@ -114,6 +114,7 @@ namespace NetFloristNewApp18.Controllers
         {
             return db.Ord_Tbl.Count(e => e.op_id == id) > 0;
         }
+
 
         // Defining and calling the stored procedure
         [Route("api/GetOrders")]
