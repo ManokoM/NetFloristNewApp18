@@ -9,16 +9,16 @@
         <EntityTypeShape EntityType="NetFloristNewApp18dbModel.Driver" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="NetFloristNewApp18dbModel.Ord_Tbl" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NetFloristNewApp18dbModel.Orderr" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NetFloristNewApp18dbModel.Payment" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NetFloristNewApp18dbModel.Product" Width="1.5" PointX="5.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="NetFloristNewApp18dbModel.ProImage" Width="1.5" PointX="8" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="NetFloristNewApp18dbModel.supplier" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NetFloristNewApp18dbModel.Table" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="NetFloristNewApp18dbModel.PRODUCT_VIEWS" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
         <AssociationConnector Association="NetFloristNewApp18dbModel.fk_order_" ManuallyRouted="false" />
         <AssociationConnector Association="NetFloristNewApp18dbModel.fk_order" ManuallyRouted="false" />
-        <AssociationConnector Association="NetFloristNewApp18dbModel.fk_payment" ManuallyRouted="false" />
-        <AssociationConnector Association="NetFloristNewApp18dbModel.fk_product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NetFloristNewApp18dbModel.Product" Width="1.5" PointX="5.75" PointY="5" />
+        <AssociationConnector Association="NetFloristNewApp18dbModel.fk_product" />
+        <EntityTypeShape EntityType="NetFloristNewApp18dbModel.Payment" Width="1.5" PointX="3" PointY="5.125" />
+        <AssociationConnector Association="NetFloristNewApp18dbModel.fk_payment" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

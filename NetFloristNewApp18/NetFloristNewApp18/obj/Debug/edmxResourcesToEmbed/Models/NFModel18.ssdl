@@ -67,8 +67,8 @@
     <Property Name="prod_price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="prod_type" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="prod_desc" Type="varchar(max)" Nullable="false" />
-    <Property Name="prod_quantity" Type="int" />
-    <Property Name="prod_threshold" Type="int" />
+    <Property Name="prod_quantity" Type="int" Nullable="false" />
+    <Property Name="prod_threshold" Type="int" Nullable="false" />
     <Property Name="prod_instock" Type="int" />
   </EntityType>
   <EntityType Name="ProImage">

@@ -51,3 +51,4 @@ C:\Users\Deklerk1\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFlor
 C:\Users\Deklerk1\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\bin\System.Web.Http.WebHost.xml
 C:\Users\Deklerk1\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\obj\Debug\NetFloristNewApp18.dll
 C:\Users\Deklerk1\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\obj\Debug\NetFloristNewApp18.pdb
+C:\Users\Deklerk1\Documents\GitHub\NetFloristNewApp18\NetFloristNewApp18\NetFloristNewApp18\obj\Debug\NetFloristNewApp18.csprojResolveAssemblyReference.cache

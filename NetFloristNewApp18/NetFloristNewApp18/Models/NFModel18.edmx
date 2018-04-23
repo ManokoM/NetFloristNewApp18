@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NetFloristNewApp18dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NetFloristNewApp18dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="admin_id" />
@@ -72,8 +72,8 @@
           <Property Name="prod_price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="prod_type" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="prod_desc" Type="varchar(max)" Nullable="false" />
-          <Property Name="prod_quantity" Type="int" />
-          <Property Name="prod_threshold" Type="int" />
+          <Property Name="prod_quantity" Type="int" Nullable="false" />
+          <Property Name="prod_threshold" Type="int" Nullable="false" />
           <Property Name="prod_instock" Type="int" />
         </EntityType>
         <EntityType Name="ProImage">
@@ -207,8 +207,7 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
             <End Role="ProImage" EntitySet="ProImage" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NetFloristNewApp18dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -261,33 +260,6 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
           <NavigationProperty Name="Drivers" Relationship="Self.fk_order_" FromRole="Orderr" ToRole="Driver" />
           <NavigationProperty Name="Table" Relationship="Self.fk_order" FromRole="Orderr" ToRole="Table" />
         </EntityType>
-        <EntityType Name="Payment">
-          <Key>
-            <PropertyRef Name="payment_id" />
-          </Key>
-          <Property Name="payment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="card_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="card_CCV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="card_expMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="card_expYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="pay_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Table" Relationship="Self.fk_payment" FromRole="Payment" ToRole="Table" />
-        </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="prod_id" />
-          </Key>
-          <Property Name="prod_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="prod_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="prod_price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="prod_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="prod_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="prod_quantity" Type="Int32" />
-          <Property Name="prod_threshold" Type="Int32" />
-          <Property Name="prod_instock" Type="Int32" />
-          <NavigationProperty Name="ProImages" Relationship="Self.fk_product" FromRole="Product" ToRole="ProImage" />
-        </EntityType>
         <EntityType Name="ProImage">
           <Key>
             <PropertyRef Name="img_id" />
@@ -295,7 +267,7 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
           <Property Name="img_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="prod_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.fk_product" FromRole="ProImage" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="NetFloristNewApp18dbModel.fk_product" FromRole="ProImage" ToRole="Product" />
         </EntityType>
         <EntityType Name="supplier">
           <Key>
@@ -317,7 +289,7 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Orderrs" Relationship="Self.fk_order" FromRole="Table" ToRole="Orderr" />
-          <NavigationProperty Name="Payments" Relationship="Self.fk_payment" FromRole="Table" ToRole="Payment" />
+          <NavigationProperty Name="Payments" Relationship="NetFloristNewApp18dbModel.fk_payment" FromRole="Table" ToRole="Payment" />
         </EntityType>
         <EntityType Name="PRODUCT_VIEWS">
           <Key>
@@ -357,37 +329,11 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_payment">
-          <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
-          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Table">
-              <PropertyRef Name="email" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="email" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProImage" Type="Self.ProImage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="prod_id" />
-            </Principal>
-            <Dependent Role="ProImage">
-              <PropertyRef Name="prod_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="NetFloristNewApp18dbEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Drivers" EntityType="Self.Driver" />
           <EntitySet Name="Ord_Tbl" EntityType="Self.Ord_Tbl" />
           <EntitySet Name="Orderrs" EntityType="Self.Orderr" />
-          <EntitySet Name="Payments" EntityType="Self.Payment" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="ProImages" EntityType="Self.ProImage" />
           <EntitySet Name="suppliers" EntityType="Self.supplier" />
           <EntitySet Name="Tables" EntityType="Self.Table" />
@@ -400,17 +346,19 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
             <End Role="Table" EntitySet="Tables" />
             <End Role="Orderr" EntitySet="Orderrs" />
           </AssociationSet>
-          <AssociationSet Name="fk_payment" Association="Self.fk_payment">
-            <End Role="Table" EntitySet="Tables" />
-            <End Role="Payment" EntitySet="Payments" />
-          </AssociationSet>
-          <AssociationSet Name="fk_product" Association="Self.fk_product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ProImage" EntitySet="ProImages" />
-          </AssociationSet>
           <FunctionImport Name="DriverOrderss" ReturnType="Collection(NetFloristNewApp18dbModel.DriverOrderss_Result)" />
           <FunctionImport Name="Drivers_Orderss" ReturnType="Collection(NetFloristNewApp18dbModel.Drivers_Orderss_Result)" />
           <FunctionImport Name="GetAllOrdersss" ReturnType="Collection(NetFloristNewApp18dbModel.GetAllOrdersss_Result)" />
+          <EntitySet Name="Products" EntityType="NetFloristNewApp18dbModel.Product" />
+          <AssociationSet Name="fk_product" Association="NetFloristNewApp18dbModel.fk_product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProImage" EntitySet="ProImages" />
+          </AssociationSet>
+          <EntitySet Name="Payments" EntityType="NetFloristNewApp18dbModel.Payment" />
+          <AssociationSet Name="fk_payment" Association="NetFloristNewApp18dbModel.fk_payment">
+            <End Role="Table" EntitySet="Tables" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="DriverOrderss_Result">
           <Property Type="Int32" Name="ord_id" Nullable="false" />
@@ -443,6 +391,57 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
           <Property Type="String" Name="ord_province" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ord_deliveryStatus" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="prod_id" />
+          </Key>
+          <Property Name="prod_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prod_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prod_price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="prod_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prod_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="prod_quantity" Type="Int32" Nullable="false" />
+          <Property Name="prod_threshold" Type="Int32" Nullable="false" />
+          <Property Name="prod_instock" Type="Int32" />
+          <NavigationProperty Name="ProImages" Relationship="NetFloristNewApp18dbModel.fk_product" FromRole="Product" ToRole="ProImage" />
+        </EntityType>
+        <Association Name="fk_product">
+          <End Type="NetFloristNewApp18dbModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="NetFloristNewApp18dbModel.ProImage" Role="ProImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="prod_id" />
+            </Principal>
+            <Dependent Role="ProImage">
+              <PropertyRef Name="prod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="payment_id" />
+          </Key>
+          <Property Name="payment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="card_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="card_CCV" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="card_expMonth" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="card_expYear" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pay_date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Table" Relationship="NetFloristNewApp18dbModel.fk_payment" FromRole="Payment" ToRole="Table" />
+        </EntityType>
+        <Association Name="fk_payment">
+          <End Type="NetFloristNewApp18dbModel.Table" Role="Table" Multiplicity="0..1" />
+          <End Type="NetFloristNewApp18dbModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -496,33 +495,6 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="ord_status" ColumnName="ord_status" />
                 <ScalarProperty Name="ord_deliveryStatus" ColumnName="ord_deliveryStatus" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Payments">
-            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Payment">
-              <MappingFragment StoreEntitySet="Payment">
-                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
-                <ScalarProperty Name="card_name" ColumnName="card_name" />
-                <ScalarProperty Name="card_CCV" ColumnName="card_CCV" />
-                <ScalarProperty Name="card_expMonth" ColumnName="card_expMonth" />
-                <ScalarProperty Name="card_expYear" ColumnName="card_expYear" />
-                <ScalarProperty Name="pay_date" ColumnName="pay_date" />
-                <ScalarProperty Name="email" ColumnName="email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="prod_id" ColumnName="prod_id" />
-                <ScalarProperty Name="prod_name" ColumnName="prod_name" />
-                <ScalarProperty Name="prod_price" ColumnName="prod_price" />
-                <ScalarProperty Name="prod_type" ColumnName="prod_type" />
-                <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
-                <ScalarProperty Name="prod_quantity" ColumnName="prod_quantity" />
-                <ScalarProperty Name="prod_threshold" ColumnName="prod_threshold" />
-                <ScalarProperty Name="prod_instock" ColumnName="prod_instock" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -611,6 +583,33 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="prod_instock" ColumnName="prod_instock" />
+                <ScalarProperty Name="prod_threshold" ColumnName="prod_threshold" />
+                <ScalarProperty Name="prod_quantity" ColumnName="prod_quantity" />
+                <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
+                <ScalarProperty Name="prod_type" ColumnName="prod_type" />
+                <ScalarProperty Name="prod_price" ColumnName="prod_price" />
+                <ScalarProperty Name="prod_name" ColumnName="prod_name" />
+                <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pay_date" ColumnName="pay_date" />
+                <ScalarProperty Name="card_expYear" ColumnName="card_expYear" />
+                <ScalarProperty Name="card_expMonth" ColumnName="card_expMonth" />
+                <ScalarProperty Name="card_CCV" ColumnName="card_CCV" />
+                <ScalarProperty Name="card_name" ColumnName="card_name" />
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -15,6 +15,9 @@ angularApp.config(['$routeProvider', function ($routeProvider) {
         when('/Login', {
             templateUrl: 'CViews/Login.html', controller: 'LoginController'
         }).
+                when('/Cash', {
+                    templateUrl: 'CViews/Cash.html', controller: 'CheckOutController'
+                }).
         when('/DLogin', {
             templateUrl: 'DViews/DLogin.html', controller: 'DLoginController', controler: 'DriverR'
         }).
@@ -94,6 +97,30 @@ angularApp.config(['$routeProvider', function ($routeProvider) {
              redirectTo: '/index'
          });
 }]).constant('FIREBASE_URL', 'something');
+
+angularApp.factory('generator', function() {
+    function buildRandArray(length) {
+        var arr = [];
+
+        for(var i = 0; i < (length || 10); i++) {
+            var fill = [];
+            for (var j = 0; j < 3; j++) {
+                fill.push(Math.floor((Math.random()*1000)+1));
+            }
+            arr.push(fill);
+        }
+
+        return arr;
+    }
+
+    return {
+        buildRandArray : buildRandArray
+    }
+})
+
+angularApp.controller('TableCtrl', function($scope, generator) {
+    $scope.items = generator.buildRandArray(10);
+});
 
 // ###################### LOGIN ############################
 angularApp.controller("ALoginController", function ($scope, $http, UserApi, $rootScope, $location, $window) {

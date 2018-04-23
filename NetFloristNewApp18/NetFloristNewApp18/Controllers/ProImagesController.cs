@@ -103,7 +103,7 @@ namespace NetFloristNewApp18.Controllers
                     picfun.img_id = new Random().Next();
                     picfun.Image = imageb;
                     picfun.prod_id = Convert.ToInt32(prod_id.prod_id.ToString());
-                    // picfun.Image = imageb;
+                    picfun.Image = imageb;
                     db.ProImages.Add(picfun);
                     db.SaveChanges();
                     counter++;

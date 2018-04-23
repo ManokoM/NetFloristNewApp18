@@ -114,6 +114,7 @@
     <Content Include="Content\StyleSheet1.css" />
     <Content Include="custIndex.html" />
     <Content Include="CViews\Cart.html" />
+    <Content Include="CViews\Cash.html" />
     <Content Include="CViews\CheckOut.html" />
     <Content Include="CViews\CProducts.html" />
     <Content Include="CViews\CustRegistration.html" />
@@ -1702,6 +1703,7 @@
     <Compile Include="Controllers\Orderrs1Controller.cs" />
     <Compile Include="Controllers\OrderrsController.cs" />
     <Compile Include="Controllers\Ord_TblController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductViewController.cs" />
     <Compile Include="Controllers\ProImagesController.cs" />

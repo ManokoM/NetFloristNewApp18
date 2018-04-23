@@ -25,8 +25,8 @@ namespace NetFloristNewApp18.Models
         public decimal prod_price { get; set; }
         public string prod_type { get; set; }
         public string prod_desc { get; set; }
-        public Nullable<int> prod_quantity { get; set; }
-        public Nullable<int> prod_threshold { get; set; }
+        public int prod_quantity { get; set; }
+        public int prod_threshold { get; set; }
         public Nullable<int> prod_instock { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
