@@ -51,6 +51,10 @@ angularApp.config(['$routeProvider', function ($routeProvider) {
         when('/UploadRestImage', {
             templateUrl: 'AViews/UploadRestImage.html', controller: 'UploadRestImageController'
         }).
+        
+    when('/TrackE', {
+        templateUrl: 'CViews/TrackE.html', controller: 'TrackController'
+    }).
         when('/UploadPic', {
             templateUrl: 'AViews/UploadPic.html', controller: 'UploadPicController'
         }).
@@ -452,6 +456,10 @@ angularApp.controller("CartController", function ($scope, $location, CommonProp,
     $scope.$watch(function () {
         CommonProp.setTotal($scope.totalPrice);
     })
+
+    $scope.calcTotal = function () {
+        return myItems;
+    }
 });
 
 angularApp.controller("HomeController", function ($scope, UserApi, $location, $rootScope) { });
@@ -1012,4 +1020,50 @@ angularApp.controller("ViewCustomersController", function ($scope, UserApi, $loc
             alert('No customers Found');
         }
     }
+});
+
+//angularApp.controller("TrackController", function ($scope, UserApi, $location, $http, $rootScope) {
+//    getOrders();
+//    function getOrders() {  //  get all the orders
+//        UserApi.GetAllOrders().then(function (response) {
+//            $scope.order_data = response.data;
+//        }), function () {
+//            alert("Couldn't get all the Orders");
+//        }
+//    };
+//});
+
+
+
+
+angularApp.filter('searchFor', function () {
+
+    return function (arr, ord_id) {
+        if (!ord_id) {
+            return arr;
+        }
+        var result = [];
+        ord_id = ord_id;
+        angular.forEach(arr, function (order_data) {
+            if (order_data.indexOf(ord_id) !== -1) {
+                result.push(order_data);
+            }
+        });
+        return result;
+    };
+});
+
+angularApp.controller('TrackController', function ($scope, $http, UserApi, $rootScope) {
+    getOrders();
+    function getOrders() {  //  get all the orders
+        UserApi.GetAllOrders().then(function (response) {
+            $scope.order_data = response.data;
+        }), function () {
+            alert("Couldn't get all the Orders");
+        }
+    };
+
+    $scope.email = $rootScope.currentUser.email;
+    $scope.contact = $rootScope.currentUser.contact;
+    $scope.firstname = $rootScope.currentUser.firstname;
 });

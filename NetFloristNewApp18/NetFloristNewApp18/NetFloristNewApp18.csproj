@@ -125,6 +125,8 @@
     <Content Include="CViews\Products.html" />
     <Content Include="CViews\Profile.html" />
     <Content Include="CViews\ThankYou.html" />
+    <Content Include="CViews\Track.html" />
+    <Content Include="CViews\TrackE.html" />
     <Content Include="demo.js" />
     <Content Include="Dindex.html" />
     <Content Include="DViews\DHome.html" />

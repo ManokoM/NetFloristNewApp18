@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Track Order</title>
+</head>
+<body ng-controller="TrackController">
+
+    <div class="container-fluid">
+        <div class="left"></div>
+        <div class="right">
+            <div class="formBox">
+                <form class="col-lg-4 col-lg-offset-4">
+                    <label>Order ID</label>
+                    <input type="number" ng-model="ord_id.ord_id" class="form-control" placeholder="enter order id"/><br />
+                </form>
+            </div>
+        </div>
+        <table class="table table-hover general-table" cellspacing="40" align="center" style="width:80%">
+            <thead class="grid-top panel">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Delivery Address</th>
+                    <th>Total Price</th>
+                    <th>Order Status</th>
+                    <th>Delivery Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ord in order_data | filter : ord_id">
+                    <td>{{ord.ord_id}}</td>
+                    <td>{{ord.ord_country}}</td>
+                    <td>{{ord.totalPrice}}</td>
+                    <td>{{ord.ord_status}}</td>
+                    <td>{{ord.ord_deliveryStatus}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+  
+
+    <!--SCRIPTS HERE-->
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+
+    <script src="demo.js"></script>
+    <script src="services.js"></script>
+</body>
+</html>

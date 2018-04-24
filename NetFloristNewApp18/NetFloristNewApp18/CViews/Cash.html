@@ -51,7 +51,7 @@
                             <tr>
                                 <td class="col-md-9"><em></em>{{ myItem.prod_name }}</h4></td>
                                 <td class="col-md-1" style="text-align: center">{{ myItem.count}} </td>
-                                <td class="col-md-1 text-center">{{ myItem.prod_price | currency : "R"}}</td>
+                                <td class="col-md-1 text-center">{{ myItem.prod_price*(myItem.count) | currency : "R"}}</td>
                                 <td class="col-md-1 text-center">{{ myItem.count}}</td>
                             </tr>
                             <tr>
@@ -77,8 +77,9 @@
                             <tr>
                                 <td>   </td>
                                 <td>   </td>
-                                <td class="text-right"><h4><strong>Total: </strong></h4></td>
-                                <td class="text-center text-danger"><h4><strong>{{amountDue | currency:"R "}}</strong></h4></td>
+                                <td class="text-right"><h4><strong>Total: {{calcTotal}}</strong></h4></td>
+                                <td class="text-center text-danger"><h4><strong>{{amountDue | currency:"R "
+}}</strong></h4></td>
                             </tr>
                         </tbody>
                     </table>
