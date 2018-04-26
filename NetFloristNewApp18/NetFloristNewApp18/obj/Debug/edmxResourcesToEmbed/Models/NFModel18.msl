@@ -136,20 +136,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Product">
-        <MappingFragment StoreEntitySet="Product">
-          <ScalarProperty Name="prod_instock" ColumnName="prod_instock" />
-          <ScalarProperty Name="prod_threshold" ColumnName="prod_threshold" />
-          <ScalarProperty Name="prod_quantity" ColumnName="prod_quantity" />
-          <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
-          <ScalarProperty Name="prod_type" ColumnName="prod_type" />
-          <ScalarProperty Name="prod_price" ColumnName="prod_price" />
-          <ScalarProperty Name="prod_name" ColumnName="prod_name" />
-          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Payments">
       <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Payment">
         <MappingFragment StoreEntitySet="Payment">
@@ -160,6 +146,21 @@
           <ScalarProperty Name="card_CCV" ColumnName="card_CCV" />
           <ScalarProperty Name="card_name" ColumnName="card_name" />
           <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="deliveryDate" ColumnName="deliveryDate" />
+          <ScalarProperty Name="prod_instock" ColumnName="prod_instock" />
+          <ScalarProperty Name="prod_threshold" ColumnName="prod_threshold" />
+          <ScalarProperty Name="prod_quantity" ColumnName="prod_quantity" />
+          <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
+          <ScalarProperty Name="prod_type" ColumnName="prod_type" />
+          <ScalarProperty Name="prod_price" ColumnName="prod_price" />
+          <ScalarProperty Name="prod_name" ColumnName="prod_name" />
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -75,6 +75,7 @@
           <Property Name="prod_quantity" Type="int" Nullable="false" />
           <Property Name="prod_threshold" Type="int" Nullable="false" />
           <Property Name="prod_instock" Type="int" />
+          <Property Name="deliveryDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="ProImage">
           <Key>
@@ -349,15 +350,15 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
           <FunctionImport Name="DriverOrderss" ReturnType="Collection(NetFloristNewApp18dbModel.DriverOrderss_Result)" />
           <FunctionImport Name="Drivers_Orderss" ReturnType="Collection(NetFloristNewApp18dbModel.Drivers_Orderss_Result)" />
           <FunctionImport Name="GetAllOrdersss" ReturnType="Collection(NetFloristNewApp18dbModel.GetAllOrdersss_Result)" />
-          <EntitySet Name="Products" EntityType="NetFloristNewApp18dbModel.Product" />
-          <AssociationSet Name="fk_product" Association="NetFloristNewApp18dbModel.fk_product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ProImage" EntitySet="ProImages" />
-          </AssociationSet>
           <EntitySet Name="Payments" EntityType="NetFloristNewApp18dbModel.Payment" />
           <AssociationSet Name="fk_payment" Association="NetFloristNewApp18dbModel.fk_payment">
             <End Role="Table" EntitySet="Tables" />
             <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <EntitySet Name="Products" EntityType="NetFloristNewApp18dbModel.Product" />
+          <AssociationSet Name="fk_product" Association="NetFloristNewApp18dbModel.fk_product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProImage" EntitySet="ProImages" />
           </AssociationSet>
         </EntityContainer>
         <ComplexType Name="DriverOrderss_Result">
@@ -391,32 +392,6 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
           <Property Type="String" Name="ord_province" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ord_deliveryStatus" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="prod_id" />
-          </Key>
-          <Property Name="prod_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="prod_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="prod_price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="prod_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="prod_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="prod_quantity" Type="Int32" Nullable="false" />
-          <Property Name="prod_threshold" Type="Int32" Nullable="false" />
-          <Property Name="prod_instock" Type="Int32" />
-          <NavigationProperty Name="ProImages" Relationship="NetFloristNewApp18dbModel.fk_product" FromRole="Product" ToRole="ProImage" />
-        </EntityType>
-        <Association Name="fk_product">
-          <End Type="NetFloristNewApp18dbModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="NetFloristNewApp18dbModel.ProImage" Role="ProImage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="prod_id" />
-            </Principal>
-            <Dependent Role="ProImage">
-              <PropertyRef Name="prod_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Payment">
           <Key>
             <PropertyRef Name="payment_id" />
@@ -439,6 +414,33 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
             </Principal>
             <Dependent Role="Payment">
               <PropertyRef Name="email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="prod_id" />
+          </Key>
+          <Property Name="prod_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prod_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prod_price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="prod_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prod_desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="prod_quantity" Type="Int32" Nullable="false" />
+          <Property Name="prod_threshold" Type="Int32" Nullable="false" />
+          <Property Name="prod_instock" Type="Int32" />
+          <Property Name="deliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ProImages" Relationship="NetFloristNewApp18dbModel.fk_product" FromRole="Product" ToRole="ProImage" />
+        </EntityType>
+        <Association Name="fk_product">
+          <End Type="NetFloristNewApp18dbModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="NetFloristNewApp18dbModel.ProImage" Role="ProImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="prod_id" />
+            </Principal>
+            <Dependent Role="ProImage">
+              <PropertyRef Name="prod_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -583,20 +585,6 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="prod_instock" ColumnName="prod_instock" />
-                <ScalarProperty Name="prod_threshold" ColumnName="prod_threshold" />
-                <ScalarProperty Name="prod_quantity" ColumnName="prod_quantity" />
-                <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
-                <ScalarProperty Name="prod_type" ColumnName="prod_type" />
-                <ScalarProperty Name="prod_price" ColumnName="prod_price" />
-                <ScalarProperty Name="prod_name" ColumnName="prod_name" />
-                <ScalarProperty Name="prod_id" ColumnName="prod_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Payments">
             <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Payment">
               <MappingFragment StoreEntitySet="Payment">
@@ -607,6 +595,21 @@ warning 6002: The table/view 'C:\USERS\DEKLERK1\DOCUMENTS\VISUAL STUDIO 2013\NET
                 <ScalarProperty Name="card_CCV" ColumnName="card_CCV" />
                 <ScalarProperty Name="card_name" ColumnName="card_name" />
                 <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="NetFloristNewApp18dbModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="deliveryDate" ColumnName="deliveryDate" />
+                <ScalarProperty Name="prod_instock" ColumnName="prod_instock" />
+                <ScalarProperty Name="prod_threshold" ColumnName="prod_threshold" />
+                <ScalarProperty Name="prod_quantity" ColumnName="prod_quantity" />
+                <ScalarProperty Name="prod_desc" ColumnName="prod_desc" />
+                <ScalarProperty Name="prod_type" ColumnName="prod_type" />
+                <ScalarProperty Name="prod_price" ColumnName="prod_price" />
+                <ScalarProperty Name="prod_name" ColumnName="prod_name" />
+                <ScalarProperty Name="prod_id" ColumnName="prod_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

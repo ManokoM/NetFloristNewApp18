@@ -3,6 +3,14 @@
 <head>
     <title>Payment Page</title>
     <meta charset="utf-8" />
+
+    <script src="../Scripts/angular.js"></script>
+    <script src="../demo.js"></script>
+    <script src="../services.js"></script>
+    <!--<script src="../Scripts/loginValidation.js"></script>-->
+    <!--<script src="../Scripts/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
 </head>
 <body ng-controller="CPaymentController">
     <div class="container">
@@ -22,7 +30,7 @@
                     <input type="text" class="form-control" ng-model="card_expYear" placeholder="2017" maxlength="4" min="4" />
                     <label>Payment Date</label><br />
                     <br />
-                    <input type="date" class="form-control" ng-model="pay_date" placeholder="Date" disabled />
+                    <input type="text" class="form-control" ng-model="pay_date" placeholder={{pay_date| date:'yyyy-MM-dd'}} disabled />
                     <br />
                     <label>CUSTOMER EMAIL</label><br />
             
@@ -47,12 +55,6 @@
 
         </div>
     </div>
-    <script src="../Scripts/angular.js"></script>
-    <script src="../demo.js"></script>
-    <script src="../services.js"></script>
-    <!--<script src="../Scripts/loginValidation.js"></script>-->
-    <!--<script src="../Scripts/angular.min.js"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../Scripts/bootstrap.js"></script>
+
 </body>
 </html>

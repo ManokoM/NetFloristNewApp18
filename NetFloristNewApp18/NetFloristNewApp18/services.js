@@ -95,8 +95,8 @@ UserService.factory('UserApi', function ($http) {
     }
 
     //Restuarant get view all orders
-    UserApi.GetAllOrders = function () {
-        return $http.get(urlBase + 'GetOrders');
+    UserApi.GetOrderrs = function () {
+        return $http.get(urlBase + 'Orderrs/');
     }
 
     //  Get and view all the Orders   (Can't view orders yet)

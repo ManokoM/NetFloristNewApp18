@@ -70,6 +70,7 @@
     <Property Name="prod_quantity" Type="int" Nullable="false" />
     <Property Name="prod_threshold" Type="int" Nullable="false" />
     <Property Name="prod_instock" Type="int" />
+    <Property Name="deliveryDate" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="ProImage">
     <Key>

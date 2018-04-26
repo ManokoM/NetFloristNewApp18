@@ -35,8 +35,8 @@ namespace NetFloristNewApp18.Models
         public virtual DbSet<supplier> suppliers { get; set; }
         public virtual DbSet<Table> Tables { get; set; }
         public virtual DbSet<PRODUCT_VIEWS> PRODUCT_VIEWS { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     
         public virtual ObjectResult<DriverOrderss_Result> DriverOrderss()
         {

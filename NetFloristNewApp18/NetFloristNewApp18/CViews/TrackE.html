@@ -28,7 +28,7 @@
             <tbody>
                 <tr ng-repeat="ord in order_data | filter : ord_id">
                     <td>{{ord.ord_id}}</td>
-                    <td>{{ord.ord_country}}</td>
+                    <td>{{ord.ord_street +", "+ord.ord_city+", "+ord.ord_province+", "+ord.ord_country}}</td>
                     <td>{{ord.totalPrice}}</td>
                     <td>{{ord.ord_status}}</td>
                     <td>{{ord.ord_deliveryStatus}}</td>

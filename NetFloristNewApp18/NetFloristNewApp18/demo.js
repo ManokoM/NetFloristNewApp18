@@ -102,30 +102,6 @@ angularApp.config(['$routeProvider', function ($routeProvider) {
          });
 }]).constant('FIREBASE_URL', 'something');
 
-angularApp.factory('generator', function() {
-    function buildRandArray(length) {
-        var arr = [];
-
-        for(var i = 0; i < (length || 10); i++) {
-            var fill = [];
-            for (var j = 0; j < 3; j++) {
-                fill.push(Math.floor((Math.random()*1000)+1));
-            }
-            arr.push(fill);
-        }
-
-        return arr;
-    }
-
-    return {
-        buildRandArray : buildRandArray
-    }
-})
-
-angularApp.controller('TableCtrl', function($scope, generator) {
-    $scope.items = generator.buildRandArray(10);
-});
-
 // ###################### LOGIN ############################
 angularApp.controller("ALoginController", function ($scope, $http, UserApi, $rootScope, $location, $window) {
     $scope.EmpLogin = function () {
@@ -487,7 +463,7 @@ angularApp.controller("CPaymentController", function ($scope, UserApi, $rootScop
                 card_CCV: $scope.card_CCV,
                 card_expMonth: $scope.card_expMonth,
                 card_expYear: $scope.card_expYear,
-                pay_date: $scope.pay_date,
+                pay_date: $scope.pay_date = new Date(),
                 email: $scope.email
             },
             headers: { 'Content-Type': 'application/json' }
@@ -726,9 +702,9 @@ angularApp.controller("AHomeController", function ($scope, UserApi, $location, $
 angularApp.controller("AViewOrdersController", function ($scope, UserApi, $location, $http, $rootScope) {
     $scope.selectedItem = "Selected Order";
     $scope.isDeleteItemVisible = false;
-    getOrders();
-    function getOrders() {  //  get all the orders
-        UserApi.GetAllOrders().then(function (response) {
+    GetOrder();
+    function GetOrder() {  //  get all the orders
+        UserApi.GetOrderrs().then(function (response) {
             $scope.order_data = response.data;
         }), function () {
             alert("Couldn't get all the Orders");
@@ -767,13 +743,18 @@ angularApp.controller("AViewOrdersController", function ($scope, UserApi, $locat
             $scope.ord_country = undefined;
             $scope.email = undefined;
             $scope.ord_status = undefined;
-            getOrders();
+            GetOrder();
             $location.path('/AHome');
         }),
             function (response) {
                 alert("Couldn't update the status");
             }
     };
+
+    function YourController($scope, $filter) {
+        var today = new Date();
+        var formattedDate = $filter('date')(today, 'yyyy-MM-dd');
+    }
 });
 
 angularApp.controller("DeleteProductsController", function ($scope, UserApi, $location, $http, $rootScope) {
@@ -833,12 +814,12 @@ angularApp.controller("DeleteProdDeetsController", function ($scope, UserApi, $l
 angularApp.controller("DOrdersController", function ($scope, UserApi, $location, $http, $rootScope) {
     $scope.selectedItem = "Selected Order";
     $scope.isDeleteItemVisible = false;
-    getOrders()  //  Get all the orders
-    function getOrders() {
-        UserApi.RetrieverDriverOrder().then(function (response) {
+    GetOrder();
+    function GetOrder() {  //  get all the orders
+        UserApi.GetOrderrs().then(function (response) {
             $scope.order_data = response.data;
         }), function () {
-            alert("Couldn't get all the orders");
+            alert("Couldn't get all the Orders");
         }
     };
     $scope.dropboxitemselected = function (item) {
@@ -876,7 +857,7 @@ angularApp.controller("DOrdersController", function ($scope, UserApi, $location,
             $scope.email = undefined;
             $scope.ord_status = undefined;
             $scope.ord_deliveryStatus = undefined;
-            getOrders();
+            GetOrder();
             $location.path('/DHome');
         }),
         function (response) {
@@ -993,7 +974,7 @@ angularApp.controller("SViewProductsController", function ($scope, UserApi, $loc
         };
         console.log(ToEdit);
         UserApi.Edit(ToEdit).then(function (response) {
-            alert("Quantity Successfully Updated");
+           //alert("Quantity Successfully Updated");
             //$scope.prod_id = undefined;
             //$scope.prod_name = undefined;
             //$scope.prod_price = undefined;
@@ -1022,48 +1003,15 @@ angularApp.controller("ViewCustomersController", function ($scope, UserApi, $loc
     }
 });
 
-//angularApp.controller("TrackController", function ($scope, UserApi, $location, $http, $rootScope) {
-//    getOrders();
-//    function getOrders() {  //  get all the orders
-//        UserApi.GetAllOrders().then(function (response) {
-//            $scope.order_data = response.data;
-//        }), function () {
-//            alert("Couldn't get all the Orders");
-//        }
-//    };
-//});
-
-
-
-
-angularApp.filter('searchFor', function () {
-
-    return function (arr, ord_id) {
-        if (!ord_id) {
-            return arr;
-        }
-        var result = [];
-        ord_id = ord_id;
-        angular.forEach(arr, function (order_data) {
-            if (order_data.indexOf(ord_id) !== -1) {
-                result.push(order_data);
-            }
-        });
-        return result;
-    };
-});
-
 angularApp.controller('TrackController', function ($scope, $http, UserApi, $rootScope) {
-    getOrders();
-    function getOrders() {  //  get all the orders
-        UserApi.GetAllOrders().then(function (response) {
+    GetOrder();
+    function GetOrder() {  //  get all the orders
+        UserApi.GetOrderrs().then(function (response) {
             $scope.order_data = response.data;
         }), function () {
             alert("Couldn't get all the Orders");
         }
     };
 
-    $scope.email = $rootScope.currentUser.email;
-    $scope.contact = $rootScope.currentUser.contact;
-    $scope.firstname = $rootScope.currentUser.firstname;
+
 });

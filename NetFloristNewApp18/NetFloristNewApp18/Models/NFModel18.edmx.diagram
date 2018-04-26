@@ -15,10 +15,10 @@
         <EntityTypeShape EntityType="NetFloristNewApp18dbModel.PRODUCT_VIEWS" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
         <AssociationConnector Association="NetFloristNewApp18dbModel.fk_order_" ManuallyRouted="false" />
         <AssociationConnector Association="NetFloristNewApp18dbModel.fk_order" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="NetFloristNewApp18dbModel.Product" Width="1.5" PointX="5.75" PointY="5" />
-        <AssociationConnector Association="NetFloristNewApp18dbModel.fk_product" />
         <EntityTypeShape EntityType="NetFloristNewApp18dbModel.Payment" Width="1.5" PointX="3" PointY="5.125" />
         <AssociationConnector Association="NetFloristNewApp18dbModel.fk_payment" />
+        <EntityTypeShape EntityType="NetFloristNewApp18dbModel.Product" Width="1.5" PointX="5.75" PointY="4.875" />
+        <AssociationConnector Association="NetFloristNewApp18dbModel.fk_product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

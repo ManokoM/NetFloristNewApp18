@@ -28,6 +28,7 @@ namespace NetFloristNewApp18.Models
         public int prod_quantity { get; set; }
         public int prod_threshold { get; set; }
         public Nullable<int> prod_instock { get; set; }
+        public System.DateTime deliveryDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProImage> ProImages { get; set; }
